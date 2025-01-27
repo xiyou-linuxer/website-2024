@@ -8,4 +8,9 @@ export default antfu({
         'jsonc/indent': ['error', 2],
         'yaml/indent': ['error', 2],
     },
+}, {
+    files: ['**/*.json'],
+    rules: {
+        'style/eol-last': ['warn', 'never'],
+    },
 })

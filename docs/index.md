@@ -4,8 +4,8 @@ layout: home
 
 hero:
   name: 西邮 Linux 兴趣小组
-  text: <small>XiyouLinuxGroup</small>
-  tagline: Free Open Share / 自由 开放 共享
+  text: <small>Free Open Share</small>
+  tagline: QQ 交流群：669398734
   image:
     src: /logo2023_compressed.webp
     alt: 西邮 Linux 兴趣小组 Logo 2023
@@ -14,8 +14,11 @@ hero:
       text: 介绍
       link: /info/
     - theme: alt
-      text: 2024纳新题
+      text: 纳新题
       link: /archive/interview-2024
+    - theme: alt
+      text: 成员
+      link: /info/member
     - theme: alt
       text: 加入我们
       link: /info/join

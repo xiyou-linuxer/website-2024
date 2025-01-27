@@ -11,6 +11,7 @@
 ## 姊妹社团
 
 - [中国科学技术大学 Linux 用户协会](https://lug.ustc.edu.cn/)
+- [西安建筑科技大学 iOS Club](https://www.xauat.site/)
 
 ## 友情交流
 
