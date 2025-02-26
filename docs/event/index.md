@@ -105,10 +105,13 @@
 
 | 日期       | 地点               | 内容                                        | 附件                                                                                           |
 | ---------- | ------------------ | ------------------------------------------- | ---------------------------------------------------------------------------------------------- |
+| 2017-12-29 | FZ118              | 活动：2018元旦晚会                          |
 | 2017-12-24 | FZ118              | 沙龙：城市导航系统的简单实现                | [<i class="fa-brands fa-weixin"></i>公众号](https://mp.weixin.qq.com/s/kOSUYY2H2oqsdaiok7M75w) |
 | 2017-12-13 | FF205              | 2018实验室纳新宣讲                          | [<i class="fa-brands fa-weixin"></i>公众号](https://mp.weixin.qq.com/s/oOmPUQeCC6AnizDCBoyqhg) |
+| 2017-12-03 | FZ118              | 活动：与移动应用开发实验室联谊              |
 | 2017-12-01 | FF205              | 技术分享：Linux Shell                       | [<i class="fa-brands fa-weixin"></i>公众号](https://mp.weixin.qq.com/s/kFENFVTkX1HQMxoOD-k-eA) |
 | 2017-11-19 | FZ118              | 沙龙：并查集Union-Find Set                  | [<i class="fa-brands fa-weixin"></i>公众号](https://mp.weixin.qq.com/s/zaXpb3aQ5RYV2Awr8YUJ5A) |
+| 2017-11-11 | 西安               | 活动：双十一爬翠华山                        |
 | 2017-11-05 | FZ118              | 沙龙：Linux网络初探                         | [<i class="fa-brands fa-weixin"></i>公众号](https://mp.weixin.qq.com/s/0_D8j4XhCEfU2pHu6_CtqA) |
 | 2017-10-29 | FF205              | 技术分享：在Linux环境下进行开发             | [<i class="fa-brands fa-weixin"></i>公众号](https://mp.weixin.qq.com/s/lYZrDNdBJLBpvNFGQ3vblg) |
 | 2017-10-14 | 重庆               | 参加第十届GNOME亚洲峰会                     | [<i class="fa-brands fa-weixin"></i>公众号](https://mp.weixin.qq.com/s/IR-KTgQ57cF-7_I2BtgKuA) |
@@ -117,6 +120,7 @@
 | 2017-09-16 | 图书馆国际会议中心 | 第14届软件自由日 (西邮站)                   | [<i class="fa-brands fa-weixin"></i>公众号](https://mp.weixin.qq.com/s/QfTrw8oxwiu-j3hYBsDPAw) |
 | 2017-06-26 | FZ118              | 沙龙：Linux Window<br>System Infrastructure | [<i class="fa-brands fa-weixin"></i>公众号](https://mp.weixin.qq.com/s/c9xxsd7yKfoRJjhau0bQdw) |
 | 2017-06-11 | FZ118              | 沙龙：Linux-巨人肩膀上的杰作                | [<i class="fa-brands fa-weixin"></i>公众号](https://mp.weixin.qq.com/s/Ci32mMxqTz30_svHcJDdJg) |
+| 2017-06-04 | FZ118              | 竞赛：Linux知识技能比赛                     |
 | 2017-05-26 | FZ118              | 2017小组纳新面试题讲解                      | [<i class="fa-brands fa-weixin"></i>公众号](https://mp.weixin.qq.com/s/H6B7BvQTvk9xwK_7hk_SGg) |
 | 2017-04-26 | FF207              | 2017小组纳新宣讲会                          | [<i class="fa-brands fa-weixin"></i>公众号](https://mp.weixin.qq.com/s/q0_X64BOe_MVhujuqWuWKw) |
 | 2017-04-16 | FZ118              | 沙龙：浅谈Linux内核                         | [<i class="fa-brands fa-weixin"></i>公众号](https://mp.weixin.qq.com/s/8iz9xJEkeFiwuL8lGWIK-g) |
@@ -136,6 +140,7 @@
 | 2016-11-20 | FZ118              | 沙龙：动态规划                        | [<i class="fa-brands fa-weixin"></i>公众号](https://mp.weixin.qq.com/s/HYZ5LAIgvUBa3Hgk6HjZig) |
 | 2016-11-06 | FZ118              | 沙龙：浅谈算法中优化时间的一些策略    | [<i class="fa-brands fa-weixin"></i>公众号](https://mp.weixin.qq.com/s/Zarns5FIqfiSVXGhXpYjuQ) |
 | 2016-10-30 | FF207              | 技术分享：Linux入门                   | [<i class="fa-brands fa-weixin"></i>公众号](https://mp.weixin.qq.com/s/CVWssBQXXbKoC4pZKxIC3g) |
+| 2016-10-22 | 西安               | 活动：太平国家森林公园游玩            |
 | 2016-10-16 | FZ118              | 沙龙：关于编码那些事儿                | [<i class="fa-brands fa-weixin"></i>公众号](https://mp.weixin.qq.com/s/I62RFT2CE1b0Z3MepUcmTA) |
 | 2016-09-17 | 图书馆国际会议中心 | 第13届软件自由日 (西邮站)             | [<i class="fa-brands fa-weixin"></i>公众号](https://mp.weixin.qq.com/s/4sbc02GAdGSx8vHCbXyN0A) |
 | 2016-06-05 | FZ118              | 沙龙：Linux基础入门                   | [<i class="fa-brands fa-weixin"></i>公众号](https://mp.weixin.qq.com/s/y3gZF3RbcziJntcr-FPEYQ) |
@@ -212,7 +217,6 @@
 | 2013-05-07 | FF207              | 2013小组纳新宣讲会                | [<i class="fa-brands fa-weixin"></i>公众号](https://mp.weixin.qq.com/mp/appmsg/show?__biz=MjM5NDQ3MDY0MA==&appmsgid=10000039&itemidx=1)                                        |
 | 2013-04-06 | 2号实验楼434       | 排序算法                          |
 | 2013-04-04 | 微信公众号         | 西邮Linux微信平台正式上线         | [<i class="fa-brands fa-weixin"></i>公众号](https://mp.weixin.qq.com/mp/appmsg/show?__biz=MjM5NDQ3MDY0MA==&appmsgid=10000011&itemidx=1)                                        |
-| 2013-04-03 | 2号实验楼434       | 案件：电脑失窃                    | [<i class="fa-brands fa-weixin"></i>公众号](https://mp.weixin.qq.com/mp/appmsg/show?__biz=MjM5NDQ3MDY0MA==&appmsgid=10000014&itemidx=1)                                        |
 
 ### 2012
 
