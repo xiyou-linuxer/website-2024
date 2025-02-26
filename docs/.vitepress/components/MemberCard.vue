@@ -1,29 +1,13 @@
 <script setup lang="ts">
-import { computed } from 'vue'
+import type { Member } from '../utils/member'
+import { getAvatar } from '../utils/member'
 
-export interface MemberProps {
-    name: string
-    title?: string
-    qq: string
-    github?: string
-    linkText?: string
-    link?: string
-}
-
-const props = defineProps<MemberProps>()
-
-const avatarLink = computed(() => {
-    return props.github
-        ? `https://wsrv.nl/?url=github.com/${props.github}.png`
-        : props.qq
-            ? `https://q1.qlogo.cn/g?b=qq&nk=${props.qq}&s=3`
-            : `/favicon.ico`
-})
+defineProps<Member>()
 </script>
 
 <template>
     <div class="card">
-        <img class="avatar" :src="avatarLink">
+        <img class="avatar" :src="getAvatar($props)">
         <span class="name">{{ name }}</span>
         <span class="title">{{ title }}</span>
         <a v-if="github" :href="`https://github.com/${github}`" target="_blank">
