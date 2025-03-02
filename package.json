@@ -11,11 +11,15 @@
   "devDependencies": {
     "@antfu/eslint-config": "^4.3.0",
     "@iconify/vue": "^4.3.0",
+    "@vueuse/core": "^12.7.0",
     "@zinkawaii/stylelint-config": "^0.3.0",
     "eslint": "^9.21.0",
-    "stylelint": "^16.14.1",
+    "parse-domain": "^8.2.2",
+    "pinia": "^3.0.1",
+    "stylelint": "^16.15.0",
     "vitepress": "^1.6.3",
-    "vue": "^3.5.13"
+    "vue": "^3.5.13",
+    "vue-tippy": "^6.6.0"
   },
   "pnpm": {
     "onlyBuiltDependencies": [

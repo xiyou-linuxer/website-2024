@@ -1,3 +1,5 @@
+import members from '../data/members'
+
 export interface Member {
     name: string
     title: string
@@ -18,4 +20,15 @@ export function getAvatar(member: Member) {
         : member.qq
             ? `https://q1.qlogo.cn/g?b=qq&nk=${member.qq}&s=3`
             : `/favicon.ico`
+}
+
+export function getMemberByName(name: string) {
+    for (const group of members) {
+        for (const member of group.members) {
+            if (member.github === name || member.name === name) {
+                return member
+            }
+        }
+    }
+    return {} as Member
 }

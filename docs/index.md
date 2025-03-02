@@ -26,7 +26,7 @@ features:
   - icon: <i class="fa-solid fa-blog"></i>
     title: 小组群博
     details: 西邮 Linux 兴趣小组历届成员博客集合，Enjoy it!
-    link: //blog.xiyoulinux.com
+    link: blog
     linkText: 访问
   - icon: <i class="fa-solid fa-list-check"></i>
     title: Plan
@@ -41,6 +41,6 @@ features:
   - icon: <i class="fa-solid fa-compass"></i>
     title: CO导航
     details: 更适合西邮宝宝体质的网址导航。
-    link: https://cooo.site
+    link: https://cooo.site/
     linkText: 访问
 ---

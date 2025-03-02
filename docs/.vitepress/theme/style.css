@@ -35,16 +35,32 @@ pre, code {
 
 .fa-solid,
 .fa-regular,
-.fa-brands,
-.iconify {
-    display: inline-block;
+.fa-brands {
     width: 1.3em;
     vertical-align: middle;
     text-align: center;
 }
 
-.icon {
+svg:where(.iconify) {
     display: inline-block;
-    height: 1.5em;
-    vertical-align: middle;
+    flex-shrink: 0;
+    font-size: 1.2em;
+    vertical-align: sub;
+}
+
+.tippy-box {
+    padding: 0.3em 0.6em;
+    border-radius: 0.5em;
+    box-shadow: var(--vp-shadow-3);
+    background-color: var(--vp-c-bg-elv);
+    font-size: 0.8em;
+    color: var(--c-text-2);
+}
+
+.tippy-box[data-state="hidden"] {
+    opacity: 0;
+}
+
+.tippy-box > .tippy-svg-arrow {
+    fill: var(--vp-c-bg-elv);
 }

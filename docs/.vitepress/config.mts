@@ -66,7 +66,7 @@ export default defineConfig({
 
 function nav(): DefaultTheme.NavItem[] {
     return [
-        { text: '群博Blog', link: 'https://blog.xiyoulinux.com' },
+        { text: '群博Blog', link: 'blog' },
         { text: '培养Plan', link: 'https://plan.xiyoulinux.com' },
         {
             text: '介绍',
