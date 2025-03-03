@@ -1,8 +1,9 @@
 <script setup lang="ts">
 import type { Article } from '../utils/atricle'
 import { storeToRefs } from 'pinia'
-import { onMounted, onUnmounted, ref, useTemplateRef } from 'vue'
+import { onMounted, onUnmounted, ref, useTemplateRef, watch } from 'vue'
 import { useArticleStore } from '../stores/article'
+import { grades } from '../utils/member'
 import ArticleItem from './ArticleItem.vue'
 import ArticlePreference from './ArticlePreference.vue'
 
@@ -10,13 +11,26 @@ const { preference, size } = storeToRefs(useArticleStore())
 
 const loading = ref(false)
 // 根据 API 返回的数据格式定义
-const pageStatus = ref({
+const initPageStatus = {
     page: 0,
     totalPages: 0,
     total: 0,
     size: 24,
-})
+}
+const pageStatus = ref({ ...initPageStatus })
 const articleList = ref<Article[]>([])
+
+const source = location.hostname === 'localhost'
+    ? 'http://localhost:3000/articles'
+    : 'https://api.xiyoulinux.com/articles'
+
+const activeGrade = ref('')
+
+watch(activeGrade, () => {
+    articleList.value = []
+    pageStatus.value = { ...initPageStatus }
+    loadMore()
+})
 
 async function loadMore() {
     if (loading.value)
@@ -24,7 +38,8 @@ async function loadMore() {
     loading.value = true
 
     const { size, page } = pageStatus.value
-    const resp = await fetch(`https://blog.xiyoulinux.com/api/articles?size=${size}&page=${page + 1}`)
+    const gradeQuery = activeGrade.value ? `&grade=${activeGrade.value}` : ''
+    const resp = await fetch(`${source}?size=${size}&page=${page + 1}${gradeQuery}`)
 
     const { articles, pagination } = await resp.json()
 
@@ -51,20 +66,33 @@ onUnmounted(() => {
 <template>
     <h1>文章列表（测试中）</h1>
     <p class="stats">
-        共 {{ pageStatus.total }} 篇文章
+        <span>共 {{ pageStatus.total }} 篇文章</span>
+        <select v-model="activeGrade" class="grade-select">
+            <option value="">
+                全部年级
+            </option>
+            <option v-for="{ grade } in grades" :key="grade" :value="grade">
+                {{ grade }} 级
+            </option>
+        </select>
         <Dropdown>
             <Icon icon="ri:list-settings-fill" />
             <template #content>
                 <ArticlePreference />
             </template>
         </Dropdown>
+        <a href="https://github.com/xiyou-linuxer/blog-feed" target="_blank"><Icon icon="ri:github-fill" /></a>
     </p>
 
     <TransitionGroup tag="section" class="article-list" :class="{ narrow: !preference.wide }">
         <ArticleItem v-for="item in articleList" :key="item._id" v-bind="item" />
-        <template v-if="pageStatus.page <= pageStatus.totalPages">
-            <div v-for="i in pageStatus.size" ref="load-trigger" :key="i" class="loading-item" />
-        </template>
+        <div
+            v-for="i in pageStatus.size"
+            v-show="pageStatus.page <= pageStatus.totalPages"
+            ref="load-trigger"
+            :key="i"
+            class="loading-item"
+        />
     </TransitionGroup>
 </template>
 
@@ -74,6 +102,17 @@ h1, .stats {
     font: revert;
     line-height: normal;
     text-align: center;
+}
+
+.stats > *:not(:first-child) {
+    margin-left: 1rem;
+}
+
+.grade-select {
+    padding: 0.3rem;
+    border-radius: 0.2rem;
+    background-color: var(--vp-c-bg-soft);
+    appearance: auto;
 }
 
 .article-list {

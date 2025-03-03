@@ -2,7 +2,7 @@
 import type { Article } from '../utils/atricle'
 import { computed } from 'vue'
 import { useArticleStore } from '../stores/article'
-import { getMember } from '../utils/member'
+import { getMemberByFeed } from '../utils/member'
 import AutoCode from './AutoCode.vue'
 
 const props = defineProps<Article>()
@@ -10,7 +10,7 @@ const props = defineProps<Article>()
 const article = useArticleStore()
 const dateLabel = new Date(props.date).toLocaleString('zh-CN', { year: '2-digit', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit' })
 
-const member = getMember(props.author)
+const member = getMemberByFeed(props.feed)
 const author = computed(() => article.getAuthor(member) || props.author)
 const avatar = computed(() => article.getAvatar(member))
 </script>

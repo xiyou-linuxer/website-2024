@@ -12,16 +12,25 @@ export interface Member {
 }
 
 export function getAvatar(member: Member) {
-    return member.github
-        ? `https://wsrv.nl/?url=github.com/${member.github}.png`
-        : member.qq
-            ? `https://q1.qlogo.cn/g?b=qq&nk=${member.qq}&s=3`
+    const { qq, github } = member
+
+    return github
+        ? `https://wsrv.nl/?url=github.com/${github}.png`
+        : qq
+            ? `https://q1.qlogo.cn/g?b=qq&nk=${qq}&s=3`
             : `/favicon.ico`
 }
 
-export function getMember(search: string) {
-    return members.find(member =>
-        member.github === search || member.name === search) as Member
+export const grades = (() => {
+    const gradeMap = new Map<string, number>()
+    members.forEach((member) => {
+        gradeMap.set(member.grade, (gradeMap.get(member.grade) || 0) + 1)
+    })
+    return Array.from(gradeMap, ([grade, length]) => ({ grade, length }))
+})()
+
+export function getMemberByFeed(feed: string) {
+    return members.find(member => member.feed === feed) || {} as Member
 }
 
 const memberIndex = members.map(member => ({
