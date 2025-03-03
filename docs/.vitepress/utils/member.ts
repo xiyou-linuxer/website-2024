@@ -1,17 +1,14 @@
-import members from '../data/members'
+import members from '../data/members.json'
 
 export interface Member {
     name: string
+    grade: string
     title: string
     qq?: string
     github?: string
     linkText: string
     link: string
-}
-
-export interface MemberGroup {
-    grade: string
-    members: Member[]
+    feed: string
 }
 
 export function getAvatar(member: Member) {
@@ -22,13 +19,17 @@ export function getAvatar(member: Member) {
             : `/favicon.ico`
 }
 
-export function getMemberByName(name: string) {
-    for (const group of members) {
-        for (const member of group.members) {
-            if (member.github === name || member.name === name) {
-                return member
-            }
-        }
-    }
-    return {} as Member
+export function getMember(search: string) {
+    return members.find(member =>
+        member.github === search || member.name === search) as Member
+}
+
+const memberIndex = members.map(member => ({
+    ...member,
+    searchString: Object.values(member).join(' ').toLowerCase(),
+}))
+
+export function getMembers(search: string) {
+    const lowerSearch = search.toLowerCase()
+    return memberIndex.filter(member => member.searchString.includes(lowerSearch))
 }

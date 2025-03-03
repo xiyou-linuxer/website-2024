@@ -1,52 +1,88 @@
 <script setup lang="ts">
-import type { MemberGroup } from '../utils/member'
 import { computed, ref } from 'vue'
+import members from '../data/members.json'
+import { getMembers } from '../utils/member'
 import MemberCard from './MemberCard.vue'
 
 const props = defineProps<{
-    members: MemberGroup[]
-    from?: number
-    to?: number
+    showNewestNum?: number
 }>()
 
-const selectedMembers = computed(() => {
-    const from = props.from ?? 0
-    const to = props.to ?? props.members.length
-    return props.members.slice(from, to)
+const grades = computed(() => {
+    const gradeMap = new Map<string, number>()
+    members.forEach((member) => {
+        gradeMap.set(member.grade, (gradeMap.get(member.grade) || 0) + 1)
+    })
+    return Array.from(gradeMap, ([grade, length]) => ({ grade, length }))
 })
 
-const activeGradeIndex = ref<string>(selectedMembers.value[0]?.grade || '')
+const activeGrade = ref<string[]>(
+    grades.value.map(g => g.grade).slice(0, props.showNewestNum ?? 1),
+)
 
-function setActiveGrade(grade: string) {
-    activeGradeIndex.value = grade
+const search = ref('')
+
+const activeMembers = computed(() =>
+    search.value
+        ? getMembers(search.value)
+        : members.filter(member => activeGrade.value.includes(member.grade)),
+)
+
+function setActiveGrade(e: MouseEvent, ...grade: string[]) {
+    search.value = ''
+    if (e.ctrlKey || e.shiftKey) {
+        if (activeGrade.value.includes(grade[0]))
+            activeGrade.value = activeGrade.value.filter(g => g !== grade[0])
+        else
+            activeGrade.value.push(grade[0])
+    }
+    else {
+        activeGrade.value = grade
+    }
 }
 </script>
 
 <template>
     <div class="tabs-container">
-        <div class="tabs">
-            <button
-                v-for="(gradeObj, gradeIndex) in selectedMembers" :key="gradeIndex"
-                :class="{ active: activeGradeIndex === gradeObj.grade }" @click="setActiveGrade(gradeObj.grade)"
-            >
-                <span class="grade">{{ gradeObj.grade }}</span>
-                <span class="badge">{{ gradeObj.members.length }}</span>
-            </button>
-        </div>
-        <div
-            v-for="gradeObj in selectedMembers" v-show="activeGradeIndex === gradeObj.grade" :key="gradeObj.grade"
-            class="tab-contents"
-        >
-            <div class="members">
-                <MemberCard v-for="member in gradeObj.members" :key="member.name" v-bind="member" />
+        <div class="scrollcheck-x">
+            <div class="tabs">
+                <button
+                    v-for="{ grade, length } in grades"
+                    :key="grade"
+                    :class="{ active: activeGrade.includes(grade) && !search }"
+                    @click="setActiveGrade($event, grade)"
+                >
+                    <span class="grade">{{ grade }}</span>
+                    <span class="badge">{{ length }}</span>
+                </button>
             </div>
+        </div>
+
+        <input
+            v-model="search"
+            class="search"
+            type="text"
+            placeholder="搜索成员"
+        >
+
+        <div class="tab-content">
+            <MemberCard
+                v-for="member in activeMembers"
+                :key="member.github || member.name"
+                v-bind="member"
+            />
         </div>
     </div>
 </template>
 
 <style scoped>
-.tabs-container > * {
+.tabs-container {
     margin: 2rem 0;
+}
+
+.scrollcheck-x {
+    position: sticky;
+    top: clamp(4rem, 8vw, 5rem);
 }
 
 .tabs {
@@ -54,6 +90,17 @@ function setActiveGrade(grade: string) {
     justify-content: center;
     gap: 0.5rem;
     flex-wrap: wrap;
+}
+
+/* stylelint-disable-next-line media-feature-range-notation */
+@media (max-width: 768px) {
+    .tabs {
+        display: grid;
+        grid-auto-flow: column;
+        grid-template-rows: 1fr 1fr;
+        width: max-content;
+        margin: 0 auto;
+    }
 }
 
 .tabs button {
@@ -66,12 +113,15 @@ function setActiveGrade(grade: string) {
     cursor: pointer;
 }
 
-.tabs button > * {
-    padding: 2px 4px;
+.tabs button > .grade {
+    padding: 0 4px;
 }
 
 .tabs button > .badge {
+    flex-grow: 1;
+    padding: 0 2px;
     background-color: var(--vp-c-default-soft);
+    vertical-align: middle;
 }
 
 .tabs button.active {
@@ -79,7 +129,15 @@ function setActiveGrade(grade: string) {
     color: var(--vp-c-bg);
 }
 
-.members {
+.search {
+    display: block;
+    margin: 1rem auto;
+    padding: 0.2rem 0.8rem;
+    border-radius: 0.5rem;
+    background-color: var(--vp-c-bg-soft);
+}
+
+.tab-content {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(9rem, 1fr));
     gap: 8px;

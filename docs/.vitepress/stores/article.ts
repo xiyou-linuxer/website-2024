@@ -18,13 +18,17 @@ export const authorMap = {
         transform: () => undefined,
     },
     name: {
-        label: '作者名',
+        label: '姓名',
         transform: (m: Member) => m.name,
     },
-    // link: {
-    //     label: '博客域名',
-    //     transform: (m: Member) => getDomain(m.feed),
-    // },
+    github: {
+        label: 'GitHub用户名',
+        transform: (m: Member) => m.github,
+    },
+    link: {
+        label: '博客域名',
+        transform: (m: Member) => getDomain(m.feed),
+    },
 }
 
 export const avatarMap = {
@@ -36,10 +40,10 @@ export const avatarMap = {
         label: '作者头像',
         transform: (m: Member) => getAvatar(m),
     },
-    // link: {
-    //     label: '网站图标',
-    //     transform: (m: Member) => `https://unavatar.webp.se/${getDomain(m.feed)}?w`,
-    // },
+    link: {
+        label: '网站图标',
+        transform: (m: Member) => `https://unavatar.webp.se/${getDomain(m.feed)}?w`,
+    },
 }
 
 export const sizeMap = {

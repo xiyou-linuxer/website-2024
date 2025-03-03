@@ -62,11 +62,13 @@ export default defineConfig({
         ['link', { rel: 'preconnect', href: 'https://fonts.gstatic.cn' }],
         ['link', { rel: 'stylesheet', href: 'https://fonts.googleapis.cn/css2?family=Fira+Code:wght@300..700&family=Noto+Serif+SC:wght@200..900&display=swap', media: 'none', onload: 'this.media="all"' }],
     ],
+
+    vite: { server: { allowedHosts: true } },
 })
 
 function nav(): DefaultTheme.NavItem[] {
     return [
-        { text: '群博Blog', link: 'blog' },
+        { text: '群博Blog', link: '/blog' },
         { text: '培养Plan', link: 'https://plan.xiyoulinux.com' },
         {
             text: '介绍',
