@@ -1,5 +1,12 @@
 <template>
-    <Tooltip class="dropdown" interactive placement="bottom" :arrow="false" :offset="[0, 0]">
+    <Tooltip
+        class="dropdown"
+        interactive
+        placement="bottom"
+        :arrow="false"
+        :hide-on-click="false"
+        :offset="[0, 0]"
+    >
         <slot />
         <template #content="{ hide }">
             <div class="dropdown-content">

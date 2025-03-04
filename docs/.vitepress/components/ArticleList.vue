@@ -1,8 +1,9 @@
 <script setup lang="ts">
-import type { Article } from '../utils/atricle'
+import type { Article } from '../utils/article'
 import { storeToRefs } from 'pinia'
 import { onMounted, onUnmounted, ref, useTemplateRef, watch } from 'vue'
 import { useArticleStore } from '../stores/article'
+import { queryBuild } from '../utils/link'
 import { grades } from '../utils/member'
 import ArticleItem from './ArticleItem.vue'
 import ArticlePreference from './ArticlePreference.vue'
@@ -13,9 +14,9 @@ const loading = ref(false)
 // 根据 API 返回的数据格式定义
 const initPageStatus = {
     page: 0,
-    totalPages: 0,
+    totalPages: 1,
     total: 0,
-    size: 24,
+    limit: 24,
 }
 const pageStatus = ref({ ...initPageStatus })
 const articleList = ref<Article[]>([])
@@ -25,11 +26,9 @@ const source = location.hostname === 'localhost'
     : 'https://api.xiyoulinux.com/articles'
 
 const activeGrade = ref('')
-
 watch(activeGrade, () => {
     articleList.value = []
     pageStatus.value = { ...initPageStatus }
-    loadMore()
 })
 
 async function loadMore() {
@@ -37,9 +36,13 @@ async function loadMore() {
         return
     loading.value = true
 
-    const { size, page } = pageStatus.value
-    const gradeQuery = activeGrade.value ? `&grade=${activeGrade.value}` : ''
-    const resp = await fetch(`${source}?size=${size}&page=${page + 1}${gradeQuery}`)
+    const url = queryBuild(source, {
+        limit: pageStatus.value.limit,
+        page: pageStatus.value.page + 1,
+        tag: activeGrade.value,
+    })
+
+    const resp = await fetch(url)
 
     const { articles, pagination } = await resp.json()
 
@@ -87,8 +90,8 @@ onUnmounted(() => {
     <TransitionGroup tag="section" class="article-list" :class="{ narrow: !preference.wide }">
         <ArticleItem v-for="item in articleList" :key="item._id" v-bind="item" />
         <div
-            v-for="i in pageStatus.size"
-            v-show="pageStatus.page <= pageStatus.totalPages"
+            v-for="i in pageStatus.limit"
+            v-show="pageStatus.page < pageStatus.totalPages"
             ref="load-trigger"
             :key="i"
             class="loading-item"

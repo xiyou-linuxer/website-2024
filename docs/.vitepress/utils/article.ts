@@ -6,4 +6,5 @@ export interface Article {
     date: string
     author: string
     feed: string
+    tag?: string
 }

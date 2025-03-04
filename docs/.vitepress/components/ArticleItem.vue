@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { Article } from '../utils/atricle'
+import type { Article } from '../utils/article'
 import { computed } from 'vue'
 import { useArticleStore } from '../stores/article'
 import { getMemberByFeed } from '../utils/member'
