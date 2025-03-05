@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { storeToRefs } from 'pinia'
-import { authorMap, avatarMap, sizeMap, useArticleStore } from '../stores/article'
+import { apiMap, authorMap, avatarMap, sizeMap, useArticleStore } from '../stores/article'
 
 const { preference } = storeToRefs(useArticleStore())
 </script>
@@ -13,20 +13,30 @@ const { preference } = storeToRefs(useArticleStore())
                 {{ author.label }}
             </option>
         </select>
+
         <label for="avatar">头像展示</label>
         <select id="avatar" v-model="preference.avatar">
             <option v-for="(avatar, key) in avatarMap" :key :value="key">
                 {{ avatar.label }}
             </option>
         </select>
+
         <label for="size">卡片尺寸</label>
         <select id="size" v-model="preference.size">
             <option v-for="(size, key) in sizeMap" :key :value="key">
                 {{ size.label }}
             </option>
         </select>
+
         <label for="wide">宽屏</label>
         <input id="wide" v-model="preference.wide" type="checkbox">
+
+        <label for="api">API</label>
+        <select id="api" v-model="preference.api">
+            <option v-for="(api, key) in apiMap" :key :value="key">
+                {{ api.label }}
+            </option>
+        </select>
     </form>
 </template>
 

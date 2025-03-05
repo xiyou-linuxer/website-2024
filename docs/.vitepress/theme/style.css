@@ -11,7 +11,13 @@
     --vp-c-brand-2: #3ca;
     --vp-c-brand-3: #1a8;
     --vp-c-brand-soft: #2b93;
+    --vp-c-bg-a: #fffa;
 }
+
+:root.dark {
+    --vp-c-bg-a: #1b1b1f77;
+}
+
 
 ::selection {
     background-color: var(--vp-c-brand-soft);
@@ -26,6 +32,21 @@
 pre, code {
     font-family: var(--font-monospace);
 }
+
+select {
+    padding: 0.3rem;
+    border-radius: 0.3rem;
+    background-color: var(--vp-c-bg-soft);
+    appearance: auto;
+}
+
+input {
+    padding: 0.3rem 0.6rem;
+    border-radius: 0.3rem;
+    background-color: var(--vp-c-bg-soft);
+    line-height: normal;
+}
+
 
 .VPHero .name,
 .VPHero .text,

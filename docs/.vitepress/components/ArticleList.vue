@@ -1,10 +1,12 @@
 <script setup lang="ts">
 import type { Article } from '../utils/article'
+import type { Member } from '../utils/member'
 import { storeToRefs } from 'pinia'
-import { onMounted, onUnmounted, ref, useTemplateRef, watch } from 'vue'
+import { computed, onMounted, onUnmounted, ref, useTemplateRef, watch } from 'vue'
+import members from '../data/members.json'
 import { useArticleStore } from '../stores/article'
 import { queryBuild } from '../utils/link'
-import { grades } from '../utils/member'
+import { getMembers, grades } from '../utils/member'
 import ArticleItem from './ArticleItem.vue'
 import ArticlePreference from './ArticlePreference.vue'
 
@@ -14,16 +16,14 @@ const loading = ref(false)
 // 根据 API 返回的数据格式定义
 const initPageStatus = {
     page: 0,
-    totalPages: 1,
+    totalPages: 1, // 保证触发 loadMore()
     total: 0,
     limit: 24,
 }
 const pageStatus = ref({ ...initPageStatus })
 const articleList = ref<Article[]>([])
 
-const source = location.hostname === 'localhost'
-    ? 'http://localhost:3000/articles'
-    : 'https://api.xiyoulinux.com/articles'
+const { api } = storeToRefs(useArticleStore())
 
 const activeGrade = ref('')
 watch(activeGrade, () => {
@@ -31,15 +31,38 @@ watch(activeGrade, () => {
     pageStatus.value = { ...initPageStatus }
 })
 
+const search = ref('')
+const searchInput = useTemplateRef('search-input')
+const activeMembers = computed(() =>
+    search.value
+        ? getMembers(search.value)
+        : members.filter(member => member.grade === activeGrade.value),
+)
+const activeMember = ref<Member>()
+watch(activeMember, () => {
+    articleList.value = []
+    pageStatus.value = { ...initPageStatus }
+    // 触发 <Dropdown> 的 untrigger 态
+    searchInput.value?.focus()
+    searchInput.value?.blur()
+})
+
+function clearFilter() {
+    search.value = ''
+    activeGrade.value = ''
+    activeMember.value = undefined
+}
+
 async function loadMore() {
     if (loading.value)
         return
     loading.value = true
 
-    const url = queryBuild(source, {
+    const url = queryBuild(api.value, {
         limit: pageStatus.value.limit,
         page: pageStatus.value.page + 1,
-        tag: activeGrade.value,
+        feed: activeMember.value ? activeMember.value.feed || 'null' : undefined,
+        tag: activeMember.value ? undefined : activeGrade.value,
     })
 
     const resp = await fetch(url)
@@ -55,6 +78,7 @@ const loadTrigger = useTemplateRef<Element[]>('load-trigger')
 let observer: IntersectionObserver
 
 onMounted(() => {
+    loadMore()
     observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => entry.isIntersecting && loadMore())
     })
@@ -67,9 +91,14 @@ onUnmounted(() => {
 </script>
 
 <template>
-    <h1>文章列表（测试中）</h1>
-    <p class="stats">
+    <h1>{{ activeMember?.name || activeGrade || "群博" }} - 文章列表</h1>
+    <p class="vp-doc stats">
         <span>共 {{ pageStatus.total }} 篇文章</span>
+        <a href="https://api.xiyoulinux.com/opml" target="_blank">OPML下载</a>
+        <a href="https://github.com/xiyou-linuxer/blog-feed" target="_blank">源代码</a>
+    </p>
+
+    <div class="control sticky-header">
         <select v-model="activeGrade" class="grade-select">
             <option value="">
                 全部年级
@@ -78,14 +107,31 @@ onUnmounted(() => {
                 {{ grade }} 级
             </option>
         </select>
+
+        <Dropdown trigger="focusin">
+            <input
+                ref="search-input"
+                v-model="search"
+                class="search"
+                type="search"
+                placeholder="搜索成员"
+            >
+            <template #content="{ hide }">
+                <button v-for="member in activeMembers" :key="member.feed" @click="(activeMember = member) && hide() ">
+                    {{ member.name }}
+                </button>
+            </template>
+        </Dropdown>
+
+        <Icon icon="ri:filter-off-line" class="cursor-pointer" @click="clearFilter()" />
+
         <Dropdown>
-            <Icon icon="ri:list-settings-fill" />
+            <Icon icon="ri:list-settings-fill" class="cursor-pointer" />
             <template #content>
                 <ArticlePreference />
             </template>
         </Dropdown>
-        <a href="https://github.com/xiyou-linuxer/blog-feed" target="_blank"><Icon icon="ri:github-fill" /></a>
-    </p>
+    </div>
 
     <TransitionGroup tag="section" class="article-list" :class="{ narrow: !preference.wide }">
         <ArticleItem v-for="item in articleList" :key="item._id" v-bind="item" />
@@ -101,7 +147,7 @@ onUnmounted(() => {
 
 <style scoped>
 h1, .stats {
-    margin: 2em 0 2rem;
+    margin: 2em 0 1rem;
     font: revert;
     line-height: normal;
     text-align: center;
@@ -111,11 +157,12 @@ h1, .stats {
     margin-left: 1rem;
 }
 
-.grade-select {
-    padding: 0.3rem;
-    border-radius: 0.2rem;
-    background-color: var(--vp-c-bg-soft);
-    appearance: auto;
+.control {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 2rem;
 }
 
 .article-list {

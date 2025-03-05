@@ -17,6 +17,24 @@
 </template>
 
 <style scoped>
+.dropdown-content.dropdown-content {
+    display: grid;
+    overflow-y: auto;
+    max-height: clamp(4rem, 50vh, 20rem);
+    margin: -0.5em;
+}
+
+.dropdown-content > :deep(button) {
+    padding: 0.2em 0.5em;
+    text-align: start;
+    transition: color 0.1s, background-color 0.2s;
+    cursor: pointer;
+}
+
+.dropdown-content > :deep(button):hover {
+    background-color: var(--vp-c-bg-soft);
+}
+
 /* https://vue-tippy.netlify.app/props#appendto
    Tooltip 位于组件根部时，interactive tippy 会插入到父组件 */
 :deep() ~ [data-tippy-root] > .tippy-box {
