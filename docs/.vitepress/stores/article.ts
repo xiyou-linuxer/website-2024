@@ -65,11 +65,11 @@ export const sizeMap = {
 export const apiMap = {
     prod: {
         label: '正常(生产环境)',
-        val: 'https://api.xiyoulinux.com/articles',
+        transform: (path: string) => new URL(path, 'https://api.xiyoulinux.com').toString(),
     },
     local: {
         label: '本地测试',
-        val: 'http://localhost:3000/articles',
+        transform: (path: string) => new URL(path, 'https://localhost:3000').toString(),
     },
 }
 
@@ -80,7 +80,7 @@ export const useArticleStore = defineStore('article', () => {
     const getAuthor = (m: Member) => authorMap[preference.value.author].transform(m)
     const getAvatar = (m: Member) => avatarMap[preference.value.avatar].transform(m)
     const size = computed(() => sizeMap[preference.value.size].val)
-    const api = computed(() => apiMap[preference.value.api].val)
+    const api = (path: string) => apiMap[preference.value.api].transform(path)
 
     return {
         preference,

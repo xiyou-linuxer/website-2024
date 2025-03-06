@@ -10,7 +10,8 @@ import { getMembers, grades } from '../utils/member'
 import ArticleItem from './ArticleItem.vue'
 import ArticlePreference from './ArticlePreference.vue'
 
-const { preference, size, api } = storeToRefs(useArticleStore())
+const { preference, size } = storeToRefs(useArticleStore())
+const { api } = useArticleStore()
 
 const loading = ref(false)
 // 根据 API 返回的数据格式定义
@@ -51,7 +52,7 @@ async function loadMore() {
         return
     loading.value = true
 
-    const url = queryBuild(api.value, {
+    const url = queryBuild(api('/articles'), {
         limit: pageStatus.value.limit,
         page: pageStatus.value.page + 1,
         feed: activeMember.value ? activeMember.value.feed || 'null' : undefined,
@@ -86,13 +87,13 @@ onUnmounted(() => {
     <h1>{{ activeMember?.name || activeGrade || "群博" }} - 文章列表</h1>
     <p class="vp-doc stats">
         <span>共 {{ pageStatus.total }} 篇文章</span>
-        <a href="https://api.xiyoulinux.com/opml" target="_blank">OPML</a>
-        <a href="https://api.xiyoulinux.com/rss" target="_blank">RSS</a>
+        <a :href="api('/opml')" target="_blank">OPML</a>
+        <a :href="api('/rss')" target="_blank">RSS</a>
         <a href="https://github.com/xiyou-linuxer/blog-feed" target="_blank">API 源码</a>
     </p>
 
     <div class="control sticky-header">
-        <select v-model="activeGrade" class="grade-select">
+        <select v-model="activeGrade" class="grade-select" aria-label="年级选择">
             <option value="">
                 全部年级
             </option>
@@ -109,23 +110,27 @@ onUnmounted(() => {
                 placeholder="搜索成员"
             >
             <template v-if="activeMembers" #content="{ hide }">
-                <button v-for="member in activeMembers" :key="member.feed" @click="setFilter({ member }), hide()">
+                <button
+                    v-for="member in activeMembers"
+                    :key="member.feed"
+                    @click="hide(), setFilter({ member })"
+                >
                     {{ member.name }}
                 </button>
             </template>
         </Dropdown>
 
-        <Icon icon="ri:filter-off-line" class="cursor-pointer" @click="setFilter()" />
+        <Icon icon="ri:filter-off-line" class="cursor-pointer" title="重置筛选" @click="setFilter()" />
 
         <Dropdown>
-            <Icon icon="ri:list-settings-fill" class="cursor-pointer" />
+            <Icon icon="ri:list-settings-fill" class="cursor-pointer" title="偏好设置" />
             <template #content>
                 <ArticlePreference />
             </template>
         </Dropdown>
     </div>
 
-    <section class="article-list" :class="{ narrow: !preference.wide }">
+    <section class="article-list" :class="{ narrow: !preference.wide }" :style="{ '--size': size }">
         <ArticleItem v-for="item in articleList" :key="item._id" v-bind="item" />
         <div
             v-for="i in pageStatus.limit"
@@ -159,7 +164,7 @@ h1, .stats {
 
 .article-list {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(v-bind(size), 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(var(--size, 20rem), 1fr));
     gap: 1rem;
     padding: 0 5% 2rem;
 }

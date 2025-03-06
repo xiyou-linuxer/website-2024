@@ -35,18 +35,22 @@ pre, code {
 
 select, input {
     height: 1.8em;
-    padding: 0 0.5rem;
     border-radius: 0.3rem;
     background-color: var(--vp-c-default-soft);
     backdrop-filter: blur(0.5em);
 }
 
 select {
+    padding: 0 0.2rem;
     appearance: auto;
 }
 
 option {
     background-color: var(--vp-c-bg-soft);
+}
+
+input {
+    padding: 0 0.5rem;
 }
 
 input[type="checkbox"] {
@@ -76,7 +80,7 @@ svg:where(.iconify) {
 
 .tippy-box {
     padding: 0.3em 0.6em;
-    border-radius: 0.5em;
+    border-radius: 0.3rem;
     box-shadow: var(--vp-shadow-3);
     background-color: var(--vp-c-bg-elv);
     font-size: 0.8em;
