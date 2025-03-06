@@ -10,7 +10,7 @@
         <slot />
         <template #content="{ hide }">
             <div class="dropdown-content">
-                <slot name="content" />
+                <slot name="content" :hide />
             </div>
         </template>
     </Tooltip>
@@ -22,6 +22,7 @@
     overflow-y: auto;
     max-height: clamp(4rem, 50vh, 20rem);
     margin: -0.5em;
+    scrollbar-width: thin;
 }
 
 .dropdown-content > :deep(button) {

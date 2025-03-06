@@ -33,20 +33,25 @@ pre, code {
     font-family: var(--font-monospace);
 }
 
-select {
-    padding: 0.3rem;
+select, input {
+    height: 1.8em;
+    padding: 0 0.5rem;
     border-radius: 0.3rem;
-    background-color: var(--vp-c-bg-soft);
+    background-color: var(--vp-c-default-soft);
+    backdrop-filter: blur(0.5em);
+}
+
+select {
     appearance: auto;
 }
 
-input {
-    padding: 0.3rem 0.6rem;
-    border-radius: 0.3rem;
+option {
     background-color: var(--vp-c-bg-soft);
-    line-height: normal;
 }
 
+input[type="checkbox"] {
+    height: 1.2em;
+}
 
 .VPHero .name,
 .VPHero .text,

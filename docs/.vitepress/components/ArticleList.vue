@@ -10,7 +10,7 @@ import { getMembers, grades } from '../utils/member'
 import ArticleItem from './ArticleItem.vue'
 import ArticlePreference from './ArticlePreference.vue'
 
-const { preference, size } = storeToRefs(useArticleStore())
+const { preference, size, api } = storeToRefs(useArticleStore())
 
 const loading = ref(false)
 // 根据 API 返回的数据格式定义
@@ -23,34 +23,27 @@ const initPageStatus = {
 const pageStatus = ref({ ...initPageStatus })
 const articleList = ref<Article[]>([])
 
-const { api } = storeToRefs(useArticleStore())
-
-const activeGrade = ref('')
-watch(activeGrade, () => {
-    articleList.value = []
-    pageStatus.value = { ...initPageStatus }
-})
-
 const search = ref('')
-const searchInput = useTemplateRef('search-input')
-const activeMembers = computed(() =>
-    search.value
-        ? getMembers(search.value)
-        : members.filter(member => member.grade === activeGrade.value),
-)
+const activeGrade = ref('')
 const activeMember = ref<Member>()
-watch(activeMember, () => {
-    articleList.value = []
-    pageStatus.value = { ...initPageStatus }
-    // 触发 <Dropdown> 的 untrigger 态
-    searchInput.value?.focus()
-    searchInput.value?.blur()
-})
+const activeMembers = computed(() => (search.value
+    ? getMembers(search.value)
+    : members.filter(member => member.grade === activeGrade.value || !activeGrade.value)
+).filter(member => member.feed))
 
-function clearFilter() {
+// activeGrade 值已更新，不应在 setFilter() 中重复赋值
+watch(activeGrade, (grade, oldGrade) => grade !== oldGrade && setFilter())
+
+function setFilter(options: { member?: Member } = {}) {
+    const { member } = options
+    pageStatus.value = { ...initPageStatus }
+    articleList.value = []
+
     search.value = ''
-    activeGrade.value = ''
-    activeMember.value = undefined
+    // 应该额外防止 activeGrade 重复赋值
+    activeMember.value = member
+
+    window.scrollTo({ top: 0, behavior: 'smooth' })
 }
 
 async function loadMore() {
@@ -66,7 +59,6 @@ async function loadMore() {
     })
 
     const resp = await fetch(url)
-
     const { articles, pagination } = await resp.json()
 
     loading.value = false
@@ -94,8 +86,9 @@ onUnmounted(() => {
     <h1>{{ activeMember?.name || activeGrade || "群博" }} - 文章列表</h1>
     <p class="vp-doc stats">
         <span>共 {{ pageStatus.total }} 篇文章</span>
-        <a href="https://api.xiyoulinux.com/opml" target="_blank">OPML下载</a>
-        <a href="https://github.com/xiyou-linuxer/blog-feed" target="_blank">源代码</a>
+        <a href="https://api.xiyoulinux.com/opml" target="_blank">OPML</a>
+        <a href="https://api.xiyoulinux.com/rss" target="_blank">RSS</a>
+        <a href="https://github.com/xiyou-linuxer/blog-feed" target="_blank">API 源码</a>
     </p>
 
     <div class="control sticky-header">
@@ -110,20 +103,19 @@ onUnmounted(() => {
 
         <Dropdown trigger="focusin">
             <input
-                ref="search-input"
                 v-model="search"
                 class="search"
                 type="search"
                 placeholder="搜索成员"
             >
-            <template #content="{ hide }">
-                <button v-for="member in activeMembers" :key="member.feed" @click="(activeMember = member) && hide() ">
+            <template v-if="activeMembers" #content="{ hide }">
+                <button v-for="member in activeMembers" :key="member.feed" @click="setFilter({ member }), hide()">
                     {{ member.name }}
                 </button>
             </template>
         </Dropdown>
 
-        <Icon icon="ri:filter-off-line" class="cursor-pointer" @click="clearFilter()" />
+        <Icon icon="ri:filter-off-line" class="cursor-pointer" @click="setFilter()" />
 
         <Dropdown>
             <Icon icon="ri:list-settings-fill" class="cursor-pointer" />
@@ -133,7 +125,7 @@ onUnmounted(() => {
         </Dropdown>
     </div>
 
-    <TransitionGroup tag="section" class="article-list" :class="{ narrow: !preference.wide }">
+    <section class="article-list" :class="{ narrow: !preference.wide }">
         <ArticleItem v-for="item in articleList" :key="item._id" v-bind="item" />
         <div
             v-for="i in pageStatus.limit"
@@ -142,7 +134,7 @@ onUnmounted(() => {
             :key="i"
             class="loading-item"
         />
-    </TransitionGroup>
+    </section>
 </template>
 
 <style scoped>
@@ -188,13 +180,5 @@ h1, .stats {
 @keyframes fade-in {
     0% { opacity: 0; }
     50% { opacity: 1; }
-}
-
-.loading-item.v-enter-from {
-    opacity: 0;
-}
-
-.loading-item.v-leave-active {
-    display: none;
 }
 </style>
