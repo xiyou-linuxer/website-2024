@@ -69,7 +69,7 @@ export const apiMap = {
     },
     local: {
         label: '本地测试',
-        transform: (path: string) => new URL(path, 'https://localhost:3000').toString(),
+        transform: (path: string) => new URL(path, 'http://localhost:3000').toString(),
     },
 }
 

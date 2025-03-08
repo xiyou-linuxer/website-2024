@@ -2,6 +2,10 @@
     cursor: pointer;
 }
 
+.bg-blur {
+    backdrop-filter: blur(0.5em);
+}
+
 /* .scrollcheck-x, .scrollcheck-y {
     scrollbar-width: thin;
 } */

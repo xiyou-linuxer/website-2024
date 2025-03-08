@@ -29,3 +29,12 @@
 .vp-doc .custom-block :first-child:first-child {
     margin: 8px 0;
 }
+
+/* stylelint-disable-next-line selector-class-pattern */
+.VPBadge {
+    padding: 0.1em 0.3em;
+    font-size: 0.8em;
+    line-height: normal;
+    vertical-align: text-bottom;
+    transform: none;
+}

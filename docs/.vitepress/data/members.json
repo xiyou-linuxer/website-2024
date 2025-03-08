@@ -654,7 +654,7 @@
     "qq": "2501159222",
     "linkText": "CSDN",
     "link": "https://blog.csdn.net/weixin_53218932",
-    "feed": "https://rss.csdn.net/weixin_53218932/rss/map"
+    "feed": ""
   },
   {
     "name": "周阔",
@@ -867,10 +867,10 @@
     "name": "杨思语",
     "grade": "2018",
     "title": "",
-    "qq": "2142530745",
+    "github": "cosineta",
     "linkText": "CSDN",
     "link": "https://blog.csdn.net/cosineta",
-    "feed": "https://rss.csdn.net/cosineta/rss/map"
+    "feed": ""
   },
   {
     "name": "吴新悦",
@@ -885,7 +885,7 @@
     "name": "李重乐",
     "grade": "2017",
     "title": "17级负责人",
-    "qq": "2665687186",
+    "github": "lalahaha323",
     "linkText": "CSDN",
     "link": "https://blog.csdn.net/lalala323",
     "feed": "https://rss.csdn.net/lalala323/rss/map"
@@ -894,7 +894,7 @@
     "name": "张小翔",
     "grade": "2017",
     "title": "17级负责人",
-    "qq": "3334008064",
+    "github": "PhoenixXC",
     "linkText": "独立博客",
     "link": "https://phoenixxc.gitee.io/",
     "feed": ""
@@ -903,7 +903,7 @@
     "name": "畅柯",
     "grade": "2017",
     "title": "",
-    "qq": "1433882609",
+    "github": "Request2609",
     "linkText": "CSDN",
     "link": "https://blog.csdn.net/qq_41681241",
     "feed": "https://rss.csdn.net/qq_41681241/rss/map"
@@ -912,7 +912,7 @@
     "name": "陈健源",
     "grade": "2017",
     "title": "",
-    "qq": "1026546351",
+    "github": "jiange702",
     "linkText": "CSDN",
     "link": "https://blog.csdn.net/jiange702",
     "feed": "https://rss.csdn.net/jiange702/rss/map"
@@ -921,7 +921,7 @@
     "name": "陈新",
     "grade": "2017",
     "title": "",
-    "qq": "1084199664",
+    "github": "Cxinsect",
     "linkText": "CSDN",
     "link": "https://blog.csdn.net/Cxinsect",
     "feed": "https://rss.csdn.net/Cxinsect/rss/map"
@@ -939,7 +939,7 @@
     "name": "赖鑫",
     "grade": "2017",
     "title": "",
-    "qq": "278434650",
+    "github": "shengshengxiaowang",
     "linkText": "CSDN",
     "link": "https://blog.csdn.net/shengshengxiaowang",
     "feed": "https://rss.csdn.net/shengshengxiaowang/rss/map"
@@ -948,7 +948,7 @@
     "name": "李高晋",
     "grade": "2017",
     "title": "",
-    "qq": "651926345",
+    "github": "lgjh123",
     "linkText": "CSDN",
     "link": "https://blog.csdn.net/DownloadV",
     "feed": "https://rss.csdn.net/DownloadV/rss/map"
@@ -993,7 +993,7 @@
     "name": "王恒",
     "grade": "2017",
     "title": "",
-    "qq": "1687734258",
+    "github": "wobushimotou",
     "linkText": "CSDN",
     "link": "https://blog.csdn.net/wobushimotou",
     "feed": "https://rss.csdn.net/wobushimotou/rss/map"
@@ -1038,7 +1038,7 @@
     "name": "娄泽豪",
     "grade": "2016",
     "title": "16级负责人",
-    "qq": "525561364",
+    "github": "hepangda",
     "linkText": "CSDN",
     "link": "https://blog.csdn.net/hepangda",
     "feed": "https://rss.csdn.net/hepangda/rss/map"
@@ -1056,7 +1056,7 @@
     "name": "王良",
     "grade": "2016",
     "title": "",
-    "qq": "1459775963",
+    "github": "niliushall",
     "linkText": "CSDN",
     "link": "https://blog.csdn.net/liushall",
     "feed": "https://rss.csdn.net/liushall/rss/map"
@@ -1065,7 +1065,7 @@
     "name": "高嘉两",
     "grade": "2016",
     "title": "",
-    "qq": "1303393472",
+    "github": "aliegjln",
     "linkText": "CSDN",
     "link": "https://blog.csdn.net/aliegjln",
     "feed": "https://rss.csdn.net/aliegjln/rss/map"
@@ -1317,10 +1317,10 @@
     "name": "蒙祺殷",
     "grade": "2015",
     "title": "",
-    "qq": "457886229",
+    "github": "Monkerys",
     "linkText": "CSDN",
     "link": "https://blog.csdn.net/Monkerys",
-    "feed": "https://rss.csdn.net/Monkerys/rss/map"
+    "feed": ""
   },
   {
     "name": "杨博东",
@@ -2616,7 +2616,7 @@
     "qq": "464963032",
     "linkText": "CSDN",
     "link": "https://blog.csdn.net/johnson1492",
-    "feed": "https://rss.csdn.net/johnson1492/rss/map"
+    "feed": ""
   },
   {
     "name": "张侃",

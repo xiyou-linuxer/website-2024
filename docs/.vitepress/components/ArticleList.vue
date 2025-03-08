@@ -93,7 +93,7 @@ onUnmounted(() => {
     </p>
 
     <div class="control sticky-header">
-        <select v-model="activeGrade" class="grade-select" aria-label="年级选择">
+        <select v-model="activeGrade" class="bg-blur" aria-label="年级选择">
             <option value="">
                 全部年级
             </option>
@@ -105,7 +105,7 @@ onUnmounted(() => {
         <Dropdown trigger="focusin">
             <input
                 v-model="search"
-                class="search"
+                class="bg-blur"
                 type="search"
                 placeholder="搜索成员"
             >
@@ -115,7 +115,7 @@ onUnmounted(() => {
                     :key="member.feed"
                     @click="hide(), setFilter({ member })"
                 >
-                    {{ member.name }}
+                    {{ member.name }} <Badge type="info" :text="member.grade" />
                 </button>
             </template>
         </Dropdown>
@@ -159,19 +159,18 @@ h1, .stats {
     align-items: center;
     justify-content: center;
     gap: 1rem;
-    margin-bottom: 2rem;
 }
 
 .article-list {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(var(--size, 20rem), 1fr));
     gap: 1rem;
-    padding: 0 5% 2rem;
+    margin: 2rem auto;
+    padding: 0 5%;
 }
 
 .article-list.narrow {
     max-width: 83rem;
-    margin: 0 auto;
 }
 
 .loading-item {

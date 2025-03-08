@@ -48,8 +48,4 @@ form {
     padding: 0.5rem;
     text-align: left;
 }
-
-select {
-    appearance: auto;
-}
 </style>

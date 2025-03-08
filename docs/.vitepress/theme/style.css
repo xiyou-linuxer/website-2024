@@ -37,7 +37,6 @@ select, input {
     height: 1.8em;
     border-radius: 0.3rem;
     background-color: var(--vp-c-default-soft);
-    backdrop-filter: blur(0.5em);
 }
 
 select {
