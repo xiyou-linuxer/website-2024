@@ -1,4 +1,5 @@
 import type { DefaultTheme } from 'vitepress'
+import process from 'node:process'
 import { defineConfig } from 'vitepress'
 
 // https://vitepress.dev/reference/site-config

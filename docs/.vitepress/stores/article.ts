@@ -10,6 +10,7 @@ const defaultPreference = {
     avatar: 'name' as keyof typeof avatarMap,
     size: 'medium' as keyof typeof sizeMap,
     wide: true,
+    api: 'prod' as keyof typeof apiMap,
 }
 
 export const authorMap = {
@@ -61,16 +62,31 @@ export const sizeMap = {
     },
 }
 
+export const apiMap = {
+    prod: {
+        label: '正常(生产环境)',
+        transform: (path: string) => new URL(path, 'https://api.xiyoulinux.com').toString(),
+    },
+    local: {
+        label: '本地测试',
+        transform: (path: string) => new URL(path, 'http://localhost:3000').toString(),
+    },
+}
+
 export const useArticleStore = defineStore('article', () => {
     const preference = useLocalStorage('article-preference', { ...defaultPreference })
+    preference.value = { ...defaultPreference, ...preference.value }
+
     const getAuthor = (m: Member) => authorMap[preference.value.author].transform(m)
     const getAvatar = (m: Member) => avatarMap[preference.value.avatar].transform(m)
     const size = computed(() => sizeMap[preference.value.size].val)
+    const api = (path: string) => apiMap[preference.value.api].transform(path)
 
     return {
         preference,
         getAuthor,
         getAvatar,
         size,
+        api,
     }
 })

@@ -1,23 +1,15 @@
 <script setup lang="ts">
 import { computed, ref } from 'vue'
 import members from '../data/members.json'
-import { getMembers } from '../utils/member'
+import { getMembers, grades } from '../utils/member'
 import MemberCard from './MemberCard.vue'
 
 const props = defineProps<{
     showNewestNum?: number
 }>()
 
-const grades = computed(() => {
-    const gradeMap = new Map<string, number>()
-    members.forEach((member) => {
-        gradeMap.set(member.grade, (gradeMap.get(member.grade) || 0) + 1)
-    })
-    return Array.from(gradeMap, ([grade, length]) => ({ grade, length }))
-})
-
 const activeGrade = ref<string[]>(
-    grades.value.map(g => g.grade).slice(0, props.showNewestNum ?? 1),
+    grades.map(entry => entry.grade).slice(0, props.showNewestNum ?? 1),
 )
 
 const search = ref('')
@@ -44,24 +36,26 @@ function setActiveGrade(e: MouseEvent, ...grade: string[]) {
 
 <template>
     <div class="tabs-container">
-        <div class="scrollcheck-x">
-            <div class="tabs">
-                <button
-                    v-for="{ grade, length } in grades"
-                    :key="grade"
-                    :class="{ active: activeGrade.includes(grade) && !search }"
-                    @click="setActiveGrade($event, grade)"
-                >
-                    <span class="grade">{{ grade }}</span>
-                    <span class="badge">{{ length }}</span>
-                </button>
+        <div class="sticky-header">
+            <div class="scrollcheck-x">
+                <div class="tabs">
+                    <button
+                        v-for="{ grade, length } in grades"
+                        :key="grade"
+                        :class="{ active: activeGrade.includes(grade) && !search }"
+                        @click="setActiveGrade($event, grade)"
+                    >
+                        <span class="grade">{{ grade }}</span>
+                        <span class="badge">{{ length }}</span>
+                    </button>
+                </div>
             </div>
         </div>
 
         <input
             v-model="search"
             class="search"
-            type="text"
+            type="search"
             placeholder="搜索成员"
         >
 
@@ -80,9 +74,12 @@ function setActiveGrade(e: MouseEvent, ...grade: string[]) {
     margin: 2rem 0;
 }
 
+.sticky-header {
+    margin: 0 -1rem;
+}
+
 .scrollcheck-x {
-    position: sticky;
-    top: clamp(4rem, 8vw, 5rem);
+    --guessed-scrollbar-height: 0px;
 }
 
 .tabs {
@@ -93,7 +90,7 @@ function setActiveGrade(e: MouseEvent, ...grade: string[]) {
 }
 
 /* stylelint-disable-next-line media-feature-range-notation */
-@media (max-width: 768px) {
+@media (max-width: 50rem) {
     .tabs {
         display: grid;
         grid-auto-flow: column;
@@ -131,10 +128,7 @@ function setActiveGrade(e: MouseEvent, ...grade: string[]) {
 
 .search {
     display: block;
-    margin: 1rem auto;
-    padding: 0.2rem 0.8rem;
-    border-radius: 0.5rem;
-    background-color: var(--vp-c-bg-soft);
+    margin: 0 auto 2rem;
 }
 
 .tab-content {
