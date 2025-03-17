@@ -14,11 +14,11 @@ export interface Member {
 export function getAvatar(member: Member) {
     const { qq, github } = member
 
-    return github
-        ? `https://wsrv.nl/?url=github.com/${github}.png`
-        : qq
-            ? `https://q1.qlogo.cn/g?b=qq&nk=${qq}&s=3`
-            : `/favicon.ico`
+    if (github)
+        return `https://wsrv.nl/?url=github.com/${github}.png%3fsize=92`
+    if (qq)
+        return `https://q1.qlogo.cn/g?b=qq&nk=${qq}&s=3`
+    return '/favicon.ico'
 }
 
 export const grades = (() => {

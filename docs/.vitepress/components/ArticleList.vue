@@ -102,7 +102,7 @@ onUnmounted(() => {
             </option>
         </select>
 
-        <Dropdown trigger="focusin">
+        <Dropdown trigger="focusin" class="search-dropdown">
             <input
                 v-model="search"
                 class="bg-blur"
@@ -131,7 +131,7 @@ onUnmounted(() => {
     </div>
 
     <section class="article-list" :class="{ narrow: !preference.wide }" :style="{ '--size': size }">
-        <ArticleItem v-for="item in articleList" :key="item._id" v-bind="item" />
+        <ArticleItem v-for="item in articleList" :key="item._id || item.link" v-bind="item" />
         <div
             v-for="i in pageStatus.limit"
             v-show="pageStatus.page < pageStatus.totalPages"
@@ -161,12 +161,19 @@ h1, .stats {
     gap: 1rem;
 }
 
+.search-dropdown {
+    flex-shrink: 1;
+}
+
+.search-dropdown input {
+    width: 100%;
+}
+
 .article-list {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(var(--size, 20rem), 1fr));
     gap: 1rem;
     margin: 2rem auto;
-    padding: 0 5%;
 }
 
 .article-list.narrow {

@@ -62,6 +62,22 @@ input[type="checkbox"] {
     font-family: "标小智无界黑", sans-serif;
 }
 
+.VPFeature {
+    position: relative;
+    overflow: hidden;
+    z-index: 0;
+}
+
+.VPFeature .icon {
+    position: absolute;
+    opacity: 0.1;
+    right: 10%;
+    bottom: 5%;
+    background-color: transparent;
+    font-size: 8em;
+    z-index: -1;
+}
+
 .fa-solid,
 .fa-regular,
 .fa-brands {
