@@ -9,17 +9,17 @@
     "preview": "vitepress preview docs"
   },
   "devDependencies": {
-    "@antfu/eslint-config": "^4.10.1",
+    "@antfu/eslint-config": "^4.12.0",
     "@iconify/vue": "^4.3.0",
-    "@vueuse/core": "^13.0.0",
+    "@vueuse/core": "^13.1.0",
     "@zinkawaii/stylelint-config": "^0.3.0",
-    "eslint": "^9.22.0",
+    "eslint": "^9.24.0",
     "parse-domain": "^8.2.2",
-    "pinia": "^3.0.1",
-    "stylelint": "^16.16.0",
+    "pinia": "^3.0.2",
+    "stylelint": "^16.18.0",
     "vitepress": "^1.6.3",
     "vue": "^3.5.13",
-    "vue-tippy": "^6.6.0"
+    "vue-tippy": "^6.7.0"
   },
   "pnpm": {
     "onlyBuiltDependencies": [
