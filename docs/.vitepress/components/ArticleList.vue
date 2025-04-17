@@ -2,7 +2,7 @@
 import type { Article } from '../utils/article'
 import type { Member } from '../utils/member'
 import { storeToRefs } from 'pinia'
-import { computed, onMounted, onUnmounted, ref, useTemplateRef, watch } from 'vue'
+import { computed, onMounted, onUnmounted, ref, useTemplateRef } from 'vue'
 import members from '../data/members.json'
 import { useArticleStore } from '../stores/article'
 import { queryBuild } from '../utils/link'
@@ -32,16 +32,13 @@ const activeMembers = computed(() => (search.value
     : members.filter(member => member.grade === activeGrade.value || !activeGrade.value)
 ).filter(member => member.feed))
 
-// activeGrade 值已更新，不应在 setFilter() 中重复赋值
-watch(activeGrade, (grade, oldGrade) => grade !== oldGrade && setFilter())
-
-function setFilter(options: { member?: Member } = {}) {
-    const { member } = options
+function setFilter(options: { member?: Member, grade?: string } = {}) {
+    const { member, grade } = options
     pageStatus.value = { ...initPageStatus }
     articleList.value = []
 
     search.value = ''
-    // 应该额外防止 activeGrade 重复赋值
+    activeGrade.value = grade || member?.grade || ''
     activeMember.value = member
 
     window.scrollTo({ top: 0, behavior: 'smooth' })
@@ -93,7 +90,13 @@ onUnmounted(() => {
     </p>
 
     <div class="control sticky-header">
-        <select v-model="activeGrade" class="bg-blur" aria-label="年级选择">
+        <!-- @change 不会在 v-model 值改变时触发 -->
+        <select
+            v-model="activeGrade"
+            class="bg-blur"
+            aria-label="年级选择"
+            @change="setFilter({ grade: activeGrade })"
+        >
             <option value="">
                 全部年级
             </option>
@@ -110,6 +113,12 @@ onUnmounted(() => {
                 placeholder="搜索成员"
             >
             <template v-if="activeMembers" #content="{ hide }">
+                <button
+                    v-if="activeMember && !search"
+                    @click="hide(), setFilter({ grade: activeGrade })"
+                >
+                    {{ activeGrade }} 级全部
+                </button>
                 <button
                     v-for="member in activeMembers"
                     :key="member.feed"
@@ -174,6 +183,16 @@ h1, .stats {
     grid-template-columns: repeat(auto-fill, minmax(var(--size, 20rem), 1fr));
     gap: 1rem;
     margin: 2rem auto;
+}
+
+@supports (grid-template-rows: masonry) {
+    .article-list {
+        grid-template-rows: masonry;
+    }
+
+    .article-item.article-item {
+        max-height: none;
+    }
 }
 
 .article-list.narrow {
