@@ -1,8 +1,9 @@
 <script setup lang="ts">
 import type { Article } from '../utils/article'
 import type { Member } from '../utils/member'
+import { useIntersectionObserver } from '@vueuse/core'
 import { storeToRefs } from 'pinia'
-import { computed, onMounted, onUnmounted, ref, useTemplateRef } from 'vue'
+import { computed, ref, useTemplateRef } from 'vue'
 import members from '../data/members.json'
 import { useArticleStore } from '../stores/article'
 import { queryBuild } from '../utils/link'
@@ -65,18 +66,11 @@ async function loadMore() {
 }
 
 const loadTrigger = useTemplateRef<Element[]>('load-trigger')
-let observer: IntersectionObserver
-
-onMounted(() => {
-    loadMore()
-    observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => entry.isIntersecting && loadMore())
-    })
-    loadTrigger.value?.forEach(item => observer.observe(item))
-})
-
-onUnmounted(() => {
-    observer?.disconnect()
+// `useIntersectionObserver` | `useTemplateRef` of array type cannot be passed as argument
+// https://github.com/vueuse/vueuse/issues/4712
+useIntersectionObserver(loadTrigger, ([{ isIntersecting }]) => {
+    if (isIntersecting)
+        loadMore()
 })
 </script>
 
@@ -131,8 +125,8 @@ onUnmounted(() => {
 
         <Icon icon="ri:filter-off-line" class="cursor-pointer" title="重置筛选" @click="setFilter()" />
 
-        <Dropdown>
-            <Icon icon="ri:list-settings-fill" class="cursor-pointer" title="偏好设置" />
+        <Dropdown tag="button" title="偏好设置">
+            <Icon icon="ri:list-settings-fill" class="cursor-pointer" />
             <template #content>
                 <ArticlePreference />
             </template>
