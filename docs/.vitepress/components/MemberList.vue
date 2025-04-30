@@ -84,9 +84,9 @@ function setActiveGrade(e: MouseEvent, ...grade: string[]) {
 
 .tabs {
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
     gap: 0.5rem;
-    flex-wrap: wrap;
 }
 
 /* stylelint-disable-next-line media-feature-range-notation */

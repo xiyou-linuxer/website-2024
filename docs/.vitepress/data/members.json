@@ -18,15 +18,6 @@
     "feed": ""
   },
   {
-    "name": "刘启冰",
-    "grade": "2024",
-    "title": "",
-    "github": "ruancang0721",
-    "linkText": "",
-    "link": "",
-    "feed": ""
-  },
-  {
     "name": "朱斌",
     "grade": "2024",
     "title": "",
@@ -34,6 +25,15 @@
     "linkText": "",
     "link": "",
     "feed": ""
+  },
+  {
+    "name": "张若水",
+    "grade": "2024",
+    "title": "",
+    "github": "DecarbonizedGlucose",
+    "linkText": "CSDN",
+    "link": "https://blog.csdn.net/qq_53766808",
+    "feed": "https://rss.csdn.net/qq_53766808/rss/map"
   },
   {
     "name": "刘雨熙",
@@ -132,6 +132,15 @@
     "github": "dongdonglfd",
     "linkText": "",
     "link": "",
+    "feed": ""
+  },
+  {
+    "name": "王柯",
+    "grade": "2024",
+    "title": "",
+    "github": "jianger-yu",
+    "linkText": "CSDN",
+    "link": "https://blog.csdn.net/2401_86153466",
     "feed": ""
   },
   {
