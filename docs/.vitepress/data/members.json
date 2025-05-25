@@ -14,7 +14,7 @@
     "title": "",
     "github": "zbchi",
     "linkText": "独立博客",
-    "link": "https://zbchi.github.io",
+    "link": "https://zbchi.github.io/",
     "feed": "https://zbchi.github.io/atom.xml"
   },
   {
@@ -166,9 +166,9 @@
     "grade": "2023",
     "title": "",
     "github": "marsevilspirit",
-    "linkText": "CSDN",
-    "link": "https://blog.csdn.net/2302_79740417",
-    "feed": "https://rss.csdn.net/2302_79740417/rss/map"
+    "linkText": "独立博客",
+    "link": "https://www.marsevilspirit.com/",
+    "feed": "https://www.marsevilspirit.com/posts/index.xml"
   },
   {
     "name": "代凌嘉",
