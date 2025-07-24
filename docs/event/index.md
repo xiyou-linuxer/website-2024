@@ -12,10 +12,19 @@
 
 **元旦晚会**：每年12月底，我们会组织元旦晚会，有精彩的才艺展示。
 
-## 计划举办的活动
+## 计划举办的活动{.hide-empty}
+
+<style scoped>
+/* 表格为空时隐藏 */
+.hide-empty:has(+ table td:first-child:empty),
+.hide-empty + table:has(td:first-child:empty) {
+    display: none;
+}
+</style>
 
 | 日期 | 地点 | 内容 | 附件 |
 | ---- | ---- | ---- | ---- |
+|      |      |      |      |
 
 ## 已经举办的活动
 
