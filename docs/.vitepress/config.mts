@@ -57,7 +57,7 @@ export default defineConfig({
 
     head: [
         ['link', { rel: 'icon', href: '/favicon.ico' }],
-        ['link', { rel: 'stylesheet', href: 'https://lib.baomitu.com/font-awesome/6.5.1/css/all.min.css', media: 'none', onload: 'media="all"' }],
+        ['link', { rel: 'stylesheet', href: 'https://lib.baomitu.com/font-awesome/7.0.0/css/all.min.css', media: 'none', onload: 'media="all"' }],
         ['link', { rel: 'preconnect', href: 'https://fonts.gstatic.cn', crossorigin: '' }],
         ['link', { rel: 'stylesheet', href: 'https://fonts.googleapis.cn/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap', media: 'none', onload: 'this.media="all"' }],
     ],
