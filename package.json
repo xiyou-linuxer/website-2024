@@ -9,15 +9,15 @@
     "preview": "vitepress preview docs"
   },
   "devDependencies": {
-    "@antfu/eslint-config": "^5.1.0",
+    "@antfu/eslint-config": "^5.2.1",
     "@iconify/vue": "^5.0.0",
     "@vueuse/core": "^13.6.0",
     "@zinkawaii/stylelint-config": "^0.3.3",
-    "eslint": "^9.32.0",
+    "eslint": "^9.33.0",
     "parse-domain": "^8.2.2",
     "pinia": "^3.0.3",
-    "stylelint": "^16.23.0",
-    "vitepress": "^1.6.3",
+    "stylelint": "^16.23.1",
+    "vitepress": "^1.6.4",
     "vue": "^3.5.18",
     "vue-tippy": "^6.7.1"
   },

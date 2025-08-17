@@ -51,14 +51,14 @@ const curYear = new Date().getFullYear()
 
 ```ts
 export interface Member {
-    name: string
-    grade: string
-    title: string
-    qq?: string
-    github?: string
-    linkText: string
-    link: string
-    feed: string
+	name: string
+	grade: string
+	title: string
+	qq?: string
+	github?: string
+	linkText: string
+	link: string
+	feed: string
 }
 ```
 

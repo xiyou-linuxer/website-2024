@@ -15,27 +15,27 @@ import './theme-enhanced.css'
 import './style.css'
 
 export default {
-    extends: DefaultTheme,
-    Layout: () => {
-        return h(DefaultTheme.Layout, null, {
-            // https://vitepress.dev/zh/guide/extending-default-theme#layout-slots
-            'doc-bottom': () => h(Footer),
-            'not-found': () => h(NotFound),
-        })
-    },
-    // enhanceApp({ app, router, siteData }) {
-    enhanceApp({ app }) {
-        app.component('Dropdown', Dropdown)
-        app.component('Icon', Icon)
-        const pinia = createPinia()
+	extends: DefaultTheme,
+	Layout: () => {
+		return h(DefaultTheme.Layout, null, {
+			// https://vitepress.dev/zh/guide/extending-default-theme#layout-slots
+			'doc-bottom': () => h(Footer),
+			'not-found': () => h(NotFound),
+		})
+	},
+	// enhanceApp({ app, router, siteData }) {
+	enhanceApp({ app }) {
+		app.component('Dropdown', Dropdown)
+		app.component('Icon', Icon)
+		const pinia = createPinia()
 
-        app.use(pinia)
-        app.use(VueTippy, {
-            component: 'Tooltip',
-            directive: 'tip',
-            defaultProps: {
-                arrow: roundArrow,
-            },
-        })
-    },
+		app.use(pinia)
+		app.use(VueTippy, {
+			component: 'Tooltip',
+			directive: 'tip',
+			defaultProps: {
+				arrow: roundArrow,
+			},
+		})
+	},
 } satisfies Theme
