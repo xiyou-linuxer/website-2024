@@ -3,7 +3,8 @@ import type { Article } from '../utils/article'
 import { computed } from 'vue'
 import { useArticleStore } from '../stores/article'
 import { getMemberByFeed } from '../utils/member'
-import AutoCode from './AutoCode.vue'
+import AutoCode from './atomic/AutoCode.vue'
+import TextEllipsis from './atomic/TextEllipsis.vue'
 
 const props = defineProps<Article>()
 
@@ -21,7 +22,7 @@ const avatar = computed(() => article.getAvatar(member))
 	:href="link"
 	target="_blank"
 >
-	<div class="title">{{ title }}</div>
+	<TextEllipsis class="title" lines="1">{{ title }}</TextEllipsis>
 	<AutoCode class="summary scrollcheck-y" tag="p" :text="description" />
 	<div class="info-line">
 		<img v-if="avatar" :src="avatar" :alt="member.name" class="avatar">
@@ -45,7 +46,7 @@ const avatar = computed(() => article.getAvatar(member))
 	border-radius: 0.5rem;
 	outline: 1px solid transparent;
 	background: var(--vp-c-bg-soft);
-	line-height: normal;
+	line-height: 1.4;
 	color: var(--vp-c-text-1);
 	z-index: 0;
 }
@@ -67,7 +68,6 @@ p.summary {
 	opacity: 0.8;
 	margin: 0;
 	font-size: 0.8rem;
-	line-height: 1.5;
 	scrollbar-width: none;
 }
 

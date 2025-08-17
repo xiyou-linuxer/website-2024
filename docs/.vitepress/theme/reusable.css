@@ -1,9 +1,9 @@
 .cursor-pointer {
-    cursor: pointer;
+	cursor: pointer;
 }
 
 .bg-blur {
-    backdrop-filter: blur(0.5em);
+	backdrop-filter: blur(0.5em);
 }
 
 /* .scrollcheck-x, .scrollcheck-y {
@@ -11,99 +11,99 @@
 } */
 
 .scrollcheck-x::-webkit-scrollbar, .scrollcheck-y::-webkit-scrollbar {
-    width: 6px;
-    height: 6px;
-    background-color: var(--c-bg-3);
-    cursor: default;
+	width: 6px;
+	height: 6px;
+	background-color: var(--c-bg-3);
+	cursor: default;
 }
 
 .scrollcheck-x::-webkit-scrollbar-thumb, .scrollcheck-y::-webkit-scrollbar-thumb {
-    border-radius: 4px;
-    box-shadow: inset 0 0 0 1px var(--c-bg-3);
-    background-color: var(--c-text-3);
+	border-radius: 4px;
+	box-shadow: inset 0 0 0 1px var(--c-bg-3);
+	background-color: var(--c-text-3);
 }
 
 .scrollcheck-x {
-    --left-offset: 0px; /* 如果填写 0 会在 calc() 时出错 */
-    --guessed-scrollbar-height: 0.5rem;
-    --fadeout-width: 2rem;
+	--left-offset: 0px; /* 如果填写 0 会在 calc() 时出错 */
+	--guessed-scrollbar-height: 0.5rem;
+	--fadeout-width: 2rem;
 
-    overflow-x: auto;
-    animation: scrollcheck-x;
-    animation-timeline: scroll(x self);
+	overflow-x: auto;
+	animation: scrollcheck-x;
+	animation-timeline: scroll(x self);
 }
 
 @keyframes scrollcheck-x {
-    0% {
-        mask:
-            linear-gradient(to right, #fff calc(100% - var(--fadeout-width)), transparent),
-            linear-gradient(to top, #fff var(--guessed-scrollbar-height), transparent var(--guessed-scrollbar-height));
-    }
+	0% {
+		mask:
+			linear-gradient(to right, #FFF calc(100% - var(--fadeout-width)), transparent),
+			linear-gradient(to top, #FFF var(--guessed-scrollbar-height), transparent var(--guessed-scrollbar-height));
+	}
 
-    0.01%, 99.99% {
-        mask:
-            linear-gradient(to right, #fff var(--left-offset), transparent var(--left-offset), #fff calc(var(--left-offset) + var(--fadeout-width)), #fff calc(100% - var(--fadeout-width)), transparent),
-            linear-gradient(to top, #fff var(--guessed-scrollbar-height), transparent var(--guessed-scrollbar-height));
-    }
+	0.01%, 99.99% {
+		mask:
+			linear-gradient(to right, #FFF var(--left-offset), transparent var(--left-offset), #FFF calc(var(--left-offset) + var(--fadeout-width)), #FFF calc(100% - var(--fadeout-width)), transparent),
+			linear-gradient(to top, #FFF var(--guessed-scrollbar-height), transparent var(--guessed-scrollbar-height));
+	}
 
-    100% {
-        mask:
-            linear-gradient(to right, #fff var(--left-offset), transparent var(--left-offset), #fff calc(var(--left-offset) + var(--fadeout-width))),
-            linear-gradient(to top, #fff var(--guessed-scrollbar-height), transparent var(--guessed-scrollbar-height));
-    }
+	100% {
+		mask:
+			linear-gradient(to right, #FFF var(--left-offset), transparent var(--left-offset), #FFF calc(var(--left-offset) + var(--fadeout-width))),
+			linear-gradient(to top, #FFF var(--guessed-scrollbar-height), transparent var(--guessed-scrollbar-height));
+	}
 }
 
 .scrollcheck-y {
-    --top-offset: 0px; /* 如果填写 0 会在 calc() 时出错 */
-    --guessed-scrollbar-width: 0.5rem;
-    --fadeout-height: 2rem;
+	--top-offset: 0px; /* 如果填写 0 会在 calc() 时出错 */
+	--guessed-scrollbar-width: 0.5rem;
+	--fadeout-height: 2rem;
 
-    overflow-y: auto;
-    animation: scrollcheck-y;
-    animation-timeline: scroll(y self);
+	overflow-y: auto;
+	animation: scrollcheck-y;
+	animation-timeline: scroll(y self);
 }
 
 @keyframes scrollcheck-y {
-    0% {
-        mask:
-            linear-gradient(to bottom, #fff calc(100% - var(--fadeout-height)), transparent),
-            linear-gradient(to left, #fff var(--guessed-scrollbar-width), transparent var(--guessed-scrollbar-width));
-    }
+	0% {
+		mask:
+			linear-gradient(to bottom, #FFF calc(100% - var(--fadeout-height)), transparent),
+			linear-gradient(to left, #FFF var(--guessed-scrollbar-width), transparent var(--guessed-scrollbar-width));
+	}
 
-    0.01%, 99.99% {
-        mask:
-            linear-gradient(to bottom, #fff var(--top-offset), transparent var(--top-offset), #fff calc(var(--top-offset) + var(--fadeout-height)), #fff calc(100% - var(--fadeout-height)), transparent),
-            linear-gradient(to left, #fff var(--guessed-scrollbar-width), transparent var(--guessed-scrollbar-width));
-    }
+	0.01%, 99.99% {
+		mask:
+			linear-gradient(to bottom, #FFF var(--top-offset), transparent var(--top-offset), #FFF calc(var(--top-offset) + var(--fadeout-height)), #FFF calc(100% - var(--fadeout-height)), transparent),
+			linear-gradient(to left, #FFF var(--guessed-scrollbar-width), transparent var(--guessed-scrollbar-width));
+	}
 
-    100% {
-        mask:
-            linear-gradient(to bottom, #fff var(--top-offset), transparent var(--top-offset), #fff calc(var(--top-offset) + var(--fadeout-height))),
-            linear-gradient(to left, #fff var(--guessed-scrollbar-width), transparent var(--guessed-scrollbar-width));
-    }
+	100% {
+		mask:
+			linear-gradient(to bottom, #FFF var(--top-offset), transparent var(--top-offset), #FFF calc(var(--top-offset) + var(--fadeout-height))),
+			linear-gradient(to left, #FFF var(--guessed-scrollbar-width), transparent var(--guessed-scrollbar-width));
+	}
 }
 
 .sticky-header {
-    position: sticky;
-    top: 0;
-    top: 47.67px;
-    padding: 1rem;
-    z-index: 1;
+	position: sticky;
+	top: 0;
+	top: 47.67px;
+	padding: 1rem;
+	z-index: 1;
 }
 
 .sticky-header::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background-color: var(--vp-c-bg-a);
-    backdrop-filter: blur(0.5rem);
-    mask: linear-gradient(to bottom, #fff calc(100% - 2rem), transparent);
-    z-index: -1;
+	content: "";
+	position: absolute;
+	inset: 0;
+	background-color: var(--vp-c-bg-a);
+	backdrop-filter: blur(0.5rem);
+	mask: linear-gradient(to bottom, #FFF calc(100% - 2rem), transparent);
+	z-index: -1;
 }
 
 /* stylelint-disable-next-line media-feature-range-notation */
 @media (min-width: 960px) {
-    .sticky-header {
-        top: var(--vp-nav-height);
-    }
+	.sticky-header {
+		top: var(--vp-nav-height);
+	}
 }

@@ -6,10 +6,11 @@ import DefaultTheme from 'vitepress/theme-without-fonts'
 import { h } from 'vue'
 import VueTippy, { roundArrow } from 'vue-tippy'
 
-import Dropdown from '../components/Dropdown.vue'
+import Dropdown from '../components/atomic/Dropdown.vue'
 import Footer from '../components/Footer.vue'
 import NotFound from '../components/NotFound.vue'
 
+import 'tippy.js/dist/svg-arrow.css'
 import './reusable.css'
 import './theme-enhanced.css'
 import './style.css'

@@ -149,7 +149,7 @@ useIntersectionObserver(loadTrigger, ([{ isIntersecting }]) => {
 h1, .stats {
 	margin: 2em 0 1rem;
 	font: revert;
-	line-height: normal;
+	line-height: 1.4;
 	text-align: center;
 }
 
