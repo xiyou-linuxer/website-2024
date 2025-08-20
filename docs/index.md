@@ -1,11 +1,11 @@
 ---
-titleTemplate: XiyouLinuxGroup
+titleTemplate: :title - Xiyou Linux Group
 layout: home
 
 hero:
   name: 西邮 Linux 兴趣小组
   text: <small>Free Open Share</small>
-  tagline: QQ 交流群：669398734
+  tagline: QQ 交流群：1056690528
   image:
     src: /logo2023_compressed.webp
     alt: 西邮 Linux 兴趣小组 Logo 2023
@@ -28,7 +28,7 @@ features:
   - icon: <i class="fa-solid fa-list-check"></i>
     title: 培养 Plan
     details: 培养计划，已开源并部署到网站，尽情探索研究吧！
-    link: https://plan.xiyoulinux.com
+    link: https://plan.xiyoulinux.com/
     linkText: 探索
   - icon: <i class="fa-solid fa-book-bookmark"></i>
     title: 西邮 Wiki
@@ -38,7 +38,7 @@ features:
   - icon: <i class="fa-solid fa-compass"></i>
     title: CO 导航
     details: 更适合西邮宝宝体质的网址导航，学习网站、签到缴费，应有尽有。
-    link: https://cooo.site/
+    link: https://www.cooo.site/
     linkText: 访问
 ---
 

@@ -11,7 +11,7 @@
   "devDependencies": {
     "@antfu/eslint-config": "^5.2.1",
     "@iconify/vue": "^5.0.0",
-    "@vueuse/core": "^13.6.0",
+    "@vueuse/core": "^13.7.0",
     "@zinkawaii/stylelint-config": "^0.3.3",
     "eslint": "^9.33.0",
     "parse-domain": "^8.2.2",
