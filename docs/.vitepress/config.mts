@@ -1,5 +1,6 @@
 import type { DefaultTheme } from 'vitepress'
 import { defineConfig } from 'vitepress'
+import { parseByGlob } from './data/load'
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
@@ -20,7 +21,7 @@ export default defineConfig({
 			// 以首次匹配的侧边栏为主
 			'/changelog': manualSidebar(),
 			// 路径需要尾随斜杠
-			'/archive/': docSidebar(),
+			'/archive/': archiveSidebar(),
 			'/manual/': manualSidebar(),
 			'/life/': lifeSidebar(),
 			// 默认侧边栏
@@ -61,6 +62,16 @@ export default defineConfig({
 		['link', { rel: 'preconnect', href: 'https://fonts.gstatic.cn', crossorigin: '' }],
 		['link', { rel: 'stylesheet', href: 'https://fonts.googleapis.cn/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap', media: 'none', onload: 'this.media="all"' }],
 	],
+
+	markdown: {
+		container: {
+			tipLabel: '提示',
+			warningLabel: '警告',
+			dangerLabel: '危险',
+			infoLabel: '信息',
+			detailsLabel: '详细信息',
+		},
+	},
 
 	vite: {
 		server: {
@@ -187,13 +198,15 @@ function lifeSidebar(): DefaultTheme.SidebarItem[] {
 	]
 }
 
-function docSidebar(): DefaultTheme.SidebarItem[] {
+function archiveSidebar(): DefaultTheme.SidebarItem[] {
+	const archiveItems = parseByGlob('docs/archive/**.md')
+
 	return [
 		{
 			text: '资料存档',
+			link: '/archive/',
 			items: [
-				{ text: '2024纳新题', link: '/archive/interview-2024' },
-				{ text: '2023纳新题', link: '/archive/interview-2023' },
+				...archiveItems,
 			],
 		},
 	]

@@ -5,7 +5,7 @@ layout: home
 hero:
   name: 西邮 Linux 兴趣小组
   text: <small>Free Open Share</small>
-  tagline: QQ 交流群：1056690528
+  tagline:
   image:
     src: /logo2023_compressed.webp
     alt: 西邮 Linux 兴趣小组 Logo 2023
@@ -54,3 +54,16 @@ const posts = data.filter(post => post.frontmatter.title)
     <a :href="post.url">{{ post.frontmatter.title }}</a>
   </li>
 </ul>
+
+<style>
+.VPHomeHero .comm-group {
+  margin: 1em auto 0;
+  font-size: 1.2em;
+}
+
+@media (min-width: 960px) {
+  .VPHomeHero .comm-group{
+    margin-inline: 0;
+  }
+}
+</style>

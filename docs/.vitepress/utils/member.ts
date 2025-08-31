@@ -21,6 +21,10 @@ export function getAvatar(member: Member) {
 	return '/favicon.ico'
 }
 
+export function getGroupAvatar(group: string) {
+	return `https://p.qlogo.cn/gh/${group}/${group}/0/`
+}
+
 export const grades = (() => {
 	const gradeMap = new Map<string, number>()
 	members.forEach((member) => {

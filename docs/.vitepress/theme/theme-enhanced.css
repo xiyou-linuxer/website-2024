@@ -3,6 +3,25 @@
 	font-size: 0.7em;
 }
 
+.VPSwitch > .check {
+	bottom: 1px;
+	width: auto;
+	height: auto;
+	aspect-ratio: 1;
+}
+
+.vp-doc > div > :where(h4, h5, h6) {
+	margin: 1.4em 0 0.5em;
+}
+
+.vp-doc blockquote > p {
+	margin: 1em 0;
+}
+
+.vp-doc table {
+	font-variant-numeric: tabular-nums;
+}
+
 .vp-doc a {
 	background: linear-gradient(var(--vp-c-brand-soft), var(--vp-c-brand-soft)) no-repeat center bottom / 100% 2px;
 	text-decoration: none;
@@ -32,9 +51,8 @@
 
 .VPBadge {
 	margin: 0 0.1em;
-	padding: 0.2em 0.6em;
+	padding: 0.2em 0.5em;
 	font-size: 0.8em;
 	line-height: 1.2;
-	vertical-align: text-bottom;
-	transform: none;
+	transform: translateY(-0.1em);
 }

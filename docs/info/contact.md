@@ -1,3 +1,7 @@
+<script setup lang="ts">
+import CommGroup from '/.vitepress/components/CommGroup.vue'
+</script>
+
 # 联系方式
 
 ## 面对面交流
@@ -15,13 +19,13 @@
 
 ### <i class="fa-brands fa-qq"></i> QQ
 
-- 2024 迎新交流群：669398734
-- 2023 迎新交流群：854990503
-- 2022 迎新交流群：809854994
+<center>
+<CommGroup :limit="Infinity" />
+</center>
 
 ### <i class="fa-brands fa-weixin"></i> 公众号：西邮Linux兴趣小组 {#mp}
 
-![](https://mp.weixin.qq.com/mp/qrcode?scene=10000004&__biz=MjM5NDQ3MDY0MA==&mid=2650026577&idx=1&sn=595a25b1715320060def98bce3c7bbf4)
+<QRCode src="http://weixin.qq.com/r/mp/sHX8_PfEcT8NKbObbyA0" style="margin-block: 1em;" />
 
 ### <i class="fa-brands fa-bilibili"></i> 哔哩哔哩：[西邮Linux兴趣小组](https://space.bilibili.com/432976868/)
 

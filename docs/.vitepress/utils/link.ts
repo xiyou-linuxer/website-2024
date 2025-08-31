@@ -14,6 +14,12 @@ export function getMainDomain(url: string, useIcann?: boolean) {
 	return `${domain}.${topLevelDomains.join('.')}`
 }
 
+export function isExtLink(url?: string) {
+	if (!url)
+		return false
+	return url.includes(':')
+}
+
 export function queryBuild(base: string, params: Record<string, any>) {
 	const newParams: Record<string, string> = {}
 	Object.keys(params).forEach((key) => {
