@@ -1,7 +1,6 @@
 /* stylelint-disable selector-class-pattern */
 
 :root {
-	--font-monospace: "SFMono-Regular", "Cascadia Code", "JetBrains Mono", "Fira Code", "Menlo", "Monaco", "Consolas", "Noto Sans Mono", "monospace", "PingFang SC", system-ui, monospace;
 	--vp-home-hero-name-color: transparent;
 	--vp-home-hero-name-background: linear-gradient(60deg, #2CA, #EC0);
 	--vp-home-hero-image-background-image: linear-gradient(30deg, #EC0 50%, #2CA 50%);

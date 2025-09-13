@@ -51,7 +51,7 @@ export default defineConfig({
 		docFooter: { prev: '上一篇', next: '下一篇' },
 
 		footer: {
-			message: '<a href="http://beian.miit.gov.cn" target="_blank"><i class="fa-solid fa-shield-halved"></i>陕ICP备2023007680号-1</a> · <a href="https://github.com/xiyou-linuxer/website-2024" target="_blank"><i class="fa-brands fa-github"></i>官网仓库</a>',
+			message: '<a href="https://beian.miit.gov.cn/" target="_blank"><i class="fa-solid fa-shield-halved"></i>陕ICP备2023007680号-1</a> · <a href="https://github.com/xiyou-linuxer/website-2024" target="_blank"><i class="fa-brands fa-github"></i>官网仓库</a>',
 			copyright: `© 2006-${new Date().getFullYear()} 西邮 Linux 兴趣小组`,
 		},
 	},
@@ -59,8 +59,8 @@ export default defineConfig({
 	head: [
 		['link', { rel: 'icon', href: '/favicon.ico' }],
 		['link', { rel: 'stylesheet', href: 'https://lib.baomitu.com/font-awesome/7.0.0/css/all.min.css', media: 'none', onload: 'media="all"' }],
-		['link', { rel: 'preconnect', href: 'https://fonts.gstatic.cn', crossorigin: '' }],
-		['link', { rel: 'stylesheet', href: 'https://fonts.googleapis.cn/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap', media: 'none', onload: 'this.media="all"' }],
+		['link', { rel: 'preconnect', href: 'https://fonts.gstatic.cn/', crossorigin: '' }],
+		['link', { rel: 'stylesheet', href: 'https://fonts.googleapis.cn/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap', media: 'print', onload: 'this.media="all"' }],
 	],
 
 	markdown: {
