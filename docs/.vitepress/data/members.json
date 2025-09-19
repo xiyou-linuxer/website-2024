@@ -2,14 +2,23 @@
   {
     "name": "王嘉乐",
     "grade": "2024",
-    "title": "",
+    "title": "24级负责人",
     "github": "Aetherance",
     "linkText": "独立博客",
     "link": "https://aetherance.github.io/",
     "feed": "https://aetherance.github.io/atom.xml"
   },
   {
-    "name": "朱斌",
+    "name": "高翊翔",
+    "grade": "2024",
+    "title": "24级负责人",
+    "github": "xyz2781790037",
+    "linkText": "独立博客",
+    "link": "https://xyz2781790037.github.io/",
+    "feed": "https://xyz2781790037.github.io/atom.xml"
+  },
+  {
+    "name": "朱泽澄",
     "grade": "2024",
     "title": "",
     "github": "zbchi",
@@ -97,15 +106,6 @@
     "linkText": "",
     "link": "",
     "feed": ""
-  },
-  {
-    "name": "高翊翔",
-    "grade": "2024",
-    "title": "",
-    "github": "xyz2781790037",
-    "linkText": "独立博客",
-    "link": "https://xyz2781790037.github.io/",
-    "feed": "https://xyz2781790037.github.io/atom.xml"
   },
   {
     "name": "郑成龙",
