@@ -1,5 +1,6 @@
 // https://vitepress.dev/zh/guide/custom-theme
 import type { Theme } from 'vitepress'
+import type { directive, Tippy } from 'vue-tippy'
 import { Icon } from '@iconify/vue'
 import { createPinia } from 'pinia'
 import DefaultTheme from 'vitepress/theme-without-fonts'
@@ -13,10 +14,25 @@ import CommGroup from '../components/CommGroup.vue'
 import Footer from '../components/Footer.vue'
 import NotFound from '../components/NotFound.vue'
 
-import 'tippy.js/dist/svg-arrow.css'
+import './font.css'
 import './reusable.css'
-import './theme-enhanced.css'
 import './style.css'
+import './theme-enhanced.css'
+import 'tippy.js/dist/svg-arrow.css'
+
+declare module 'vue' {
+	// @keep-sorted
+	interface GlobalComponents {
+		Dropdown: typeof Dropdown
+		Icon: typeof Icon
+		QRCode: typeof QRCode
+		Tip: typeof Tip
+		Tooltip: typeof Tippy
+	}
+	interface GlobalDirectives {
+		vTip: typeof directive
+	}
+}
 
 export default {
 	extends: DefaultTheme,

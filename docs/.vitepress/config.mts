@@ -4,7 +4,7 @@ import { parseByGlob } from './data/load'
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
-	lang: 'zh-Hans',
+	lang: 'zh-CN',
 	title: '西邮 Linux 兴趣小组',
 	description: '',
 	lastUpdated: true,
@@ -58,7 +58,7 @@ export default defineConfig({
 
 	head: [
 		['link', { rel: 'icon', href: '/favicon.ico' }],
-		['link', { rel: 'stylesheet', href: 'https://lib.baomitu.com/font-awesome/7.0.0/css/all.min.css', media: 'none', onload: 'media="all"' }],
+		['link', { rel: 'stylesheet', href: 'https://lib.baomitu.com/font-awesome/7.0.0/css/all.min.css', media: 'print', onload: 'media="all"' }],
 		['link', { rel: 'preconnect', href: 'https://fonts.gstatic.cn/', crossorigin: '' }],
 		['link', { rel: 'stylesheet', href: 'https://fonts.googleapis.cn/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap', media: 'print', onload: 'this.media="all"' }],
 	],

@@ -56,7 +56,7 @@ onMounted(() => {
 	<p>
 		距离 {{ event || '事件' }} 还有
 	</p>
-	<p>
+	<p class="flex">
 		<span class="time">{{ timeLeft.days }}</span>天
 		<span class="time">{{ timeLeft.hours }}</span>小时
 		<span class="time">{{ timeLeft.minutes }}</span>分
@@ -73,8 +73,12 @@ p {
 	font-size: 1.2em;
 }
 
+.flex {
+	display: flex;
+}
+
 .time {
-	font-family: Consolas, monospace;
+	font-variant-numeric: tabular-nums;
 	font-size: 2em;
 }
 

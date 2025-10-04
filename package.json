@@ -1,7 +1,7 @@
 {
   "name": "xiyoulinux-website",
   "type": "module",
-  "version": "3.2.6",
+  "version": "3.3.0",
   "private": true,
   "scripts": {
     "dev": "vitepress dev docs --host",
@@ -15,17 +15,16 @@
     "pinia": "^3.0.3",
     "qrcode": "^1.5.4",
     "vitepress": "^1.6.4",
-    "vue": "^3.5.21",
+    "vue": "^3.5.22",
     "vue-tippy": "^6.7.1"
   },
   "devDependencies": {
-    "@antfu/eslint-config": "^5.3.0",
-    "@types/node": "^24.3.3",
+    "@antfu/eslint-config": "^5.4.1",
     "@types/qrcode": "^1.5.5",
     "@zinkawaii/stylelint-config": "^0.3.3",
-    "eslint": "^9.35.0",
+    "eslint": "^9.36.0",
     "gray-matter": "^4.0.3",
-    "stylelint": "^16.24.0"
+    "stylelint": "^16.25.0"
   },
   "pnpm": {
     "onlyBuiltDependencies": [

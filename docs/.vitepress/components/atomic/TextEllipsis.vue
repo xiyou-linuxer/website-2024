@@ -3,12 +3,12 @@ import { useResizeObserver } from '@vueuse/core'
 import { computed, ref, useTemplateRef } from 'vue'
 
 defineProps<{
-	lines?: number | string
+	lines?: string | number
 }>()
 
 const textEllipsis = useTemplateRef('text-ellipsis')
 const isClamped = ref(false)
-const tip = computed(() => isClamped.value ? textEllipsis.value?.textContent.trim() : {})
+const tip = computed(() => isClamped.value ? textEllipsis.value?.textContent?.trim() : undefined)
 
 function detectClamp() {
 	if (!textEllipsis.value)

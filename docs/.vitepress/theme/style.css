@@ -28,10 +28,6 @@
 	src: url("/static/BiaoXiaoZhiWuJieHei.otf");
 }
 
-pre, code {
-	font-family: var(--font-monospace);
-}
-
 select, input {
 	height: 1.8em;
 	border-radius: 0.3rem;

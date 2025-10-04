@@ -1,8 +1,4 @@
 /* stylelint-disable selector-class-pattern */
-:root {
-	--font-monospace: "JetBrains Mono", "SFMono-Regular", "Cascadia Code", "Fira Code", "Menlo", "Monaco", "Consolas", "Noto Sans Mono", "monospace", "Noto Sans SC", system-ui, monospace;
-}
-
 .VPMenuGroup > .title {
 	font-size: 0.7em;
 }
@@ -43,6 +39,22 @@
 
 .vp-doc s {
 	opacity: 0.6;
+}
+
+.vp-doc ::marker {
+	color: var(--vp-c-brand-1);
+}
+
+.vp-doc ol:not([class]), .vp-doc ol:not([class]) ol ol ol {
+	list-style-type: revert;
+}
+
+.vp-doc ol:not([class]) ol, .vp-doc ol:not([class]) ol ol ol ol {
+	list-style-type: lower-alpha;
+}
+
+.vp-doc ol:not([class]) ol ol, .vp-doc ol:not([class]) ol ol ol ol ol {
+	list-style-type: lower-roman;
 }
 
 .vp-doc .custom-block {
