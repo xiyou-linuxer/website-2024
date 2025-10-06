@@ -3,7 +3,7 @@ aside: false
 ---
 
 <script setup>
-import MemberList from '/.vitepress/components/MemberList.vue'
+import MemberList from "@/components/MemberList.vue"
 </script>
 
 # 成员

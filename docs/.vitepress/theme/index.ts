@@ -20,17 +20,27 @@ import './style.css'
 import './theme-enhanced.css'
 import 'tippy.js/dist/svg-arrow.css'
 
+const globalComponents = {
+	Dropdown,
+	Icon,
+	QRCode,
+	Tip,
+}
+
+export type GlobalComponentTypes = typeof globalComponents
+
 declare module 'vue' {
-	// @keep-sorted
-	interface GlobalComponents {
-		Dropdown: typeof Dropdown
-		Icon: typeof Icon
-		QRCode: typeof QRCode
-		Tip: typeof Tip
+	interface GlobalComponents extends GlobalComponentTypes {
 		Tooltip: typeof Tippy
 	}
+
 	interface GlobalDirectives {
 		vTip: typeof directive
+	}
+
+	interface ComponentCustomProperties {
+		$frontmatter: Record<string, any>
+		$param: Record<string, any>
 	}
 }
 
@@ -46,14 +56,12 @@ export default {
 	},
 	// enhanceApp({ app, router, siteData }) {
 	enhanceApp({ app }) {
-		app.component('Dropdown', Dropdown)
-		app.component('Icon', Icon)
-		app.component('QRCode', QRCode)
-		app.component('Tip', Tip)
+		// 注册 globalComponents
+		Object.entries(globalComponents).forEach(args => app.component(...args))
 
 		const pinia = createPinia()
-
 		app.use(pinia)
+
 		app.use(VueTippy, {
 			component: 'Tooltip',
 			directive: 'tip',

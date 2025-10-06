@@ -1,7 +1,7 @@
 {
   "name": "xiyoulinux-website",
   "type": "module",
-  "version": "3.3.0",
+  "version": "3.4.0",
   "private": true,
   "scripts": {
     "dev": "vitepress dev docs --host",
@@ -22,7 +22,8 @@
     "@antfu/eslint-config": "^5.4.1",
     "@types/qrcode": "^1.5.5",
     "@zinkawaii/stylelint-config": "^0.3.3",
-    "eslint": "^9.36.0",
+    "@zinkawaii/tsconfig": "^0.0.2",
+    "eslint": "^9.37.0",
     "gray-matter": "^4.0.3",
     "stylelint": "^16.25.0"
   },

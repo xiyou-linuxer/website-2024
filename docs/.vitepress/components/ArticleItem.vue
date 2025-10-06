@@ -61,6 +61,10 @@ const avatar = computed(() => article.getAvatar(member))
 	content: unset;
 }
 
+.title {
+	font-weight: 500;
+}
+
 p.summary {
 	--guessed-scrollbar-width: 0px;
 

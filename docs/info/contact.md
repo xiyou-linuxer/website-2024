@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import CommGroup from '/.vitepress/components/CommGroup.vue'
+import CommGroup from "@/components/CommGroup.vue"
 </script>
 
 # 联系方式

@@ -43,7 +43,7 @@ features:
 ---
 
 <script setup>
-import { data } from '/.vitepress/data/archive.data'
+import { data } from "@/data/archive.data"
 const posts = data.filter(post => post.frontmatter.title)
 </script>
 
