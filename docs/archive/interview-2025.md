@@ -3,22 +3,20 @@ title: 西邮 Linux 兴趣小组 2025 纳新面试题
 date: 2025-10-09 19:29:08
 ---
 
-<script setup>
-import CountDown from "@/components/CountDown.vue"
-</script>
-
 # {{ $frontmatter.title }}
 
-> 学长寄语：长期以来，西邮Linux 兴趣小组的面试题以难度之高名扬西邮校内。我们作为出题人也清楚 的知道这份试题略有难度。**请你动手敲一敲代码。** 别担心，若有同学能完成一半的题目，就已经十分优秀。 其次，相比于题目的答案，我们对你的思路和过程更感兴趣，或许你的答案略有瑕疵，但你正确的思路和对 知识的理解足以为你赢得绝大多数的分数。最后，做题的过程也是学习和成长的过程，相信本试题对你更加 熟悉地掌握C语言一定有所帮助。祝你好运。我们东区逸夫楼FZ103见！
+> 学长寄语：长期以来，西邮 Linux 兴趣小组的面试题以难度之高名扬西邮校内。我们作为出题人也清楚地知道这份试题略有难度。**请你动手敲一敲代码**。别担心，若有同学能完成一半的题目，就已经十分优秀。其次，相比于题目的答案，我们对你的思路和过程更感兴趣，或许你的答案略有瑕疵，但你正确的思路和对知识的理解足以为你赢得绝大多数的分数。最后，做题的过程也是学习和成长的过程，相信本试题对你更加熟悉地掌握 C 语言一定有所帮助。祝你好运。我们东区逸夫楼 FZ103 见！
 
 - 本题目只作为西邮 Linux 兴趣小组 2025 纳新面试的有限参考。
-- 为节省版面，本试题的程序源码省去了 部分 main 函数的 **return 0;** 和 **#include** 指令。
-- 本试题中的程序源码仅用于考察 C 语言基础，不应当作为C 语言「代码风格」的范例。
+- 为节省版面，本试题的程序源码省去了 `#include` 指令。{title="电子版已为 main() 补上 return 0;"}
+- 本试题中的程序源码仅用于考察 C 语言基础，不应当作为 C 语言「代码风格」的范例。
 - 所有题目编译并运行于 **x86_64 GNU/Linux** 环境。
 
 ## 0. 拼命的企鹅
 
- 一只企鹅在爬山，每隔一段路都会遇到一块石头。第 1 块石头重量是 a，每往上走一段 路，石头重量就会变成上一段的平方。企鹅可以选择把某些石头捡起来，最后把捡到的石头 重量相乘，它怎样捡石头，才能得到重量乘积恰好是 a 的 b 次方的石头？（比如 b=173 时， 要捡哪些石头？）
+一只企鹅在爬山，每隔一段路都会遇到一块石头。第 1 块石头重量是 `a`，每往上走一段路，石头重量就会变成上一段的平方。企鹅可以选择把某些石头捡起来，最后把捡到的石头重量相乘。
+
+它怎样捡石头，才能得到重量乘积恰好是 `a` 的 `b` 次方的石头？（比如 `b = 173` 时， 要捡哪些石头？）
 
 ## 1. 西邮Linux欢迎你啊
 
@@ -33,9 +31,9 @@ int main() {
 }
 ```
 
-## 2. 可以和 \0 组一辈子字符串吗？
+## 2. 可以和 `\0` 组一辈子字符串吗？
 
-你能找到成功打印的语句吗？你能看出每个`if`中函数的返回值吗？这些函数各有什么特点？
+你能找到成功打印的语句吗？你能看出每个 `if` 中函数的返回值吗？这些函数各有什么特点？
 
 ```c
 int main() {
@@ -55,7 +53,7 @@ int main() {
 }
 ```
 
-## 3.数学没问题，浮点数有鬼
+## 3. 数学没问题，浮点数有鬼
 
 这个程序的输出是什么？解释为什么会这样？
 
@@ -83,17 +81,17 @@ void findUndercoverIDs(int nums[], int size) {
     for (int i = 0; i < size; i++) {
         if(nums[i] & diffBit){
             id_a ^= nums[i];
-        } else{
+        } else {
             id_b ^= nums[i];
         }
     }
-    printf("These nums are %d %d\n",id_a,id_b);
+    printf("These nums are %d %d\n", id_a, id_b);
 }
 ```
 
 ## 5. 会一直循环吗？
 
-你了解`argc`和`argv`吗，程序的输出是什么？为什么会这样？
+你了解 `argc` 和 `argv` 吗，程序的输出是什么？为什么会这样？
 
 ```c
 int main(int argc, char* argv[]) {
@@ -109,7 +107,7 @@ int main(int argc, char* argv[]) {
 }
 ```
 
-## 6. const 与指针：谁能动，谁不能动？
+## 6. `const` 与指针：谁能动，谁不能动？
 
 ```c
 struct P {
@@ -129,17 +127,11 @@ int main() {
 
 说说下列操作是否合法，并解释原因：
 
-`ptr1->x = 100`
-`ptr2->x = 300`
-`ptr3->x = 500`
+`ptr1->x = 100`, `ptr2->x = 300`, `ptr3->x = 500`
 
-`ptr1->y = 200`
-`ptr1 = &p2`
-`ptr2->y = 400`
+`ptr1->y = 200`, `ptr1 = &p2`, `ptr2->y = 400`
 
-`ptr2 = &p1`
-`ptr3->y = 600`
-`ptr3 = &p1`
+`ptr2 = &p1`, `ptr3->y = 600`, `ptr3 = &p1`
 
 ## 7. 指针！数组!
 
@@ -157,17 +149,7 @@ int main() {
 
 说说这几个表达式的输出分别是什么？
 
-`a`, 
-`*b`, 
-`*b + 1`, 
-`b`, 
-`b + 1`, 
-`* (*b + 1)`, 
-`c`, 
-`sizeof(a)`, 
-`sizeof(b)`, 
-`sizeof(&a)`
-`sizeof(f1)`
+`a`, `*b`, `*b + 1`, `b`, `b + 1`, `* (*b + 1)`, `c`, `sizeof(a)`, `sizeof(b)`, `sizeof(&a)`, `sizeof(f1)`
 
 ## 8. 全局还是局部！！！
 
@@ -175,14 +157,13 @@ int main() {
 
 ```c
 int g;
-int func(){
+int func() {
     static int j = 98;
     i += g;
     return j;
 }
 
-int main()
-{
+int main() {
     g += 3;
     char arr[6] = {};
     arr[1] = func();
@@ -194,13 +175,13 @@ int main()
 }
 ```
 
-## 8. 宏函数指针
+## 9. 宏函数指针
 
 观察程序结果，说说程序运行的过程：
 
 ```c
 #define CALL_MAIN(main, x) (*(int (*)(int))*main)(x);
-#define DOUBLE(x) 2* x
+#define DOUBLE(x) 2 * x
 int (*registry[1])(int);
 int main(int argc) {
     if (argc > 2e3) return 0;
@@ -213,24 +194,24 @@ int main(int argc) {
 
 ## 10. 拼接 排序 去重
 
-本题要求你编写以下函数，不能改动 main 函数里的代码。实现对arr1和arr2的拼接、排序和去重。你需要自行定义result结构体并使用malloc手动开辟内存。
+本题要求你编写以下函数，不能改动 `main` 函数里的代码。实现对 `arr1` 和 `arr2` 的拼接、排序和去重。你需要自行定义 `result` 结构体并使用 `malloc` 手动开辟内存。
 
 ```c
 int main() {
-	int arr1[] = { 6, 1, 2, 1, 9, 1, 3, 2, 6, 2 };
-	int arr2[] = { 4, 2, 2, 1, 6, 2 };
-	int len1 = sizeof(arr1) / sizeof(arr1[0]);
-	int len2 = sizeof(arr2) / sizeof(arr2[0]);
+    int arr1[] = { 6, 1, 2, 1, 9, 1, 3, 2, 6, 2 };
+    int arr2[] = { 4, 2, 2, 1, 6, 2 };
+    int len1 = sizeof(arr1) / sizeof(arr1[0]);
+    int len2 = sizeof(arr2) / sizeof(arr2[0]);
 
-	struct result result;
-	your_concat(arr1, len1, arr2, len2, result);
-	print_result(result);
-	your_sort(result);
-	print_result(result);
-	your_dedup(result);
-	print_result(result);
-	free(result.arr);
-	return 0;
+    struct result result;
+    your_concat(arr1, len1, arr2, len2, result);
+    print_result(result);
+    your_sort(result);
+    print_result(result);
+    your_dedup(result);
+    print_result(result);
+    free(result.arr);
+    return 0;
 }
 ```
 
@@ -262,7 +243,7 @@ int main() {
 
 ```c
 union data {
-    void **** p;
+    void**** p;
     char arr[20];
 };
 typedef struct node {
@@ -299,15 +280,16 @@ int main() {
 
 注：嘿！你或许对 Linux 命令不是很熟悉，甚至你没听说过 Linux。但别担心，这是选做题，了解 Linux 是加分项，但不了解也不扣分哦！
 
-1. 你知道`cd`命令的用法与 `/ ~ -` 这些符号的含义吗？
-2. 你知道Linux系统如何创建和删除一个目录吗？
+1. 你知道 `cd` 命令的用法与 `/` `~` `-` 这些符号的含义吗？
+2. 你知道 Linux 系统如何创建和删除一个目录吗？
 3. 请问你还懂得哪些与 GNU/Linux 相关的知识呢？
 
 ---
 
 :::tip 结语
-🎉 恭喜你完成了所有题目！\\(^▽^)/来到这里已经比绝大部分人强很多了。\
+🎉 恭喜你完成了所有题目！`\(^▽^)/` 来到这里已经比绝大部分人强很多了。\
 无论结果如何，相信这个过程已经让你对 C 语言和 Linux 有了更深入的了解。\
-记住，编程是一个持续学习的过程，保持好奇心和学习的热情。\
+记住，编程是一个持续学习的过程，保持好奇心和学习的热情。
+
 我们期待在西邮 Linux 兴趣小组见到你！
 :::
