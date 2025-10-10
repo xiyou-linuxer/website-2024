@@ -9,4 +9,4 @@ import CountDown from "@/components/CountDown.vue"
 
 # {{ $frontmatter.title }}
 
-<CountDown event="题目发布" targetTime="2025-10-10 19:30:00" endMessage="题目已发布，请刷新页面" />
+<CountDown event="题目发布" targetTime="2025-10-10 20:30:00" endMessage="题目已发布，请刷新页面" />
