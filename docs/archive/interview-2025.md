@@ -159,7 +159,7 @@ int main() {
 int g;
 int func() {
     static int j = 98;
-    i += g;
+    j += g;
     return j;
 }
 
