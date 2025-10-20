@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import type { Member } from '../utils/member'
-import { getAvatar } from '../utils/member'
+import type { Member } from '@/utils/member'
+import { getAvatar } from '@/utils/member'
 
 defineProps<Member>()
 </script>

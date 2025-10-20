@@ -1,10 +1,10 @@
 <script setup lang="ts">
-import type { Article } from '../utils/article'
+import type { Article } from '@/utils/article'
 import { computed } from 'vue'
-import { useArticleStore } from '../stores/article'
-import { getMemberByFeed } from '../utils/member'
-import AutoCode from './atomic/AutoCode.vue'
-import TextEllipsis from './atomic/TextEllipsis.vue'
+import AutoCode from '@/components/atomic/AutoCode.vue'
+import TextEllipsis from '@/components/atomic/TextEllipsis.vue'
+import { useArticleStore } from '@/stores/article'
+import { getMemberByFeed } from '@/utils/member'
 
 const props = defineProps<Article>()
 

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { isExtLink } from '../../utils/link'
+import { isExtLink } from '@/utils/link'
 import Tip from './Tip.vue'
 
 defineProps<{

@@ -1,9 +1,9 @@
-import type { Member } from '../utils/member'
+import type { Member } from '@/utils/member'
 import { useLocalStorage } from '@vueuse/core'
 import { defineStore } from 'pinia'
 import { computed } from 'vue'
-import { getDomain } from '../utils/link'
-import { getAvatar } from '../utils/member'
+import { getDomain } from '@/utils/link'
+import { getAvatar } from '@/utils/member'
 
 const defaultPreference = {
 	author: 'raw' as keyof typeof authorMap,

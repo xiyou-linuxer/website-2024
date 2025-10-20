@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { getGroupAvatar } from '../utils/member'
-import Dropdown from './atomic/Dropdown.vue'
+import Dropdown from '@/components/atomic/Dropdown.vue'
+import { getGroupAvatar } from '@/utils/member'
 
 withDefaults(defineProps<{ limit?: number }>(), {
 	limit: 1,

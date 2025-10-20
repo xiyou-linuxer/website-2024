@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed, ref } from 'vue'
-import members from '../data/members.json'
-import { getMembers, grades } from '../utils/member'
+import members from '@/data/members.json'
+import { getMembers, grades } from '@/utils/member'
 import MemberCard from './MemberCard.vue'
 
 const props = defineProps<{

@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { storeToRefs } from 'pinia'
-import { apiMap, authorMap, avatarMap, sizeMap, useArticleStore } from '../stores/article'
+import { apiMap, authorMap, avatarMap, sizeMap, useArticleStore } from '@/stores/article'
 
 const { preference } = storeToRefs(useArticleStore())
 </script>
