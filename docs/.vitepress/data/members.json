@@ -1,5 +1,158 @@
 [
   {
+    "name": "叶露斌",
+    "grade": "2025",
+    "title": "",
+    "github": "yelubin377-jpg",
+    "linkText": "CSDN",
+    "link": "https://blog.csdn.net/yelubin612",
+    "feed": "https://rss.csdn.net/yelubin612/rss/map"
+  },
+  {
+    "name": "张鑫蕾",
+    "grade": "2025",
+    "title": "",
+    "github": "zxl666-bang",
+    "linkText": "CSDN",
+    "link": "https://blog.csdn.net/zxlzhenshi666",
+    "feed": ""
+  },
+  {
+    "name": "李泽莹",
+    "grade": "2025",
+    "title": "",
+    "github": "regening",
+    "linkText": "CSDN",
+    "link": "https://blog.csdn.net/2301_79584457",
+    "feed": ""
+  },
+  {
+    "name": "郭梦迪",
+    "grade": "2025",
+    "title": "",
+    "github": "guomeng-di",
+    "linkText": "CSDN",
+    "link": "https://blog.csdn.net/2501_93510914",
+    "feed": ""
+  },
+  {
+    "name": "任磊",
+    "grade": "2025",
+    "title": "",
+    "github": "shixuzhimeng",
+    "linkText": "CSDN",
+    "link": "https://blog.csdn.net/shixuzhimeng",
+    "feed": ""
+  },
+  {
+    "name": "吕佳洋",
+    "grade": "2025",
+    "title": "",
+    "github": "FRiver",
+    "linkText": "CSDN",
+    "link": "https://blog.csdn.net/rivergma",
+    "feed": ""
+  },
+  {
+    "name": "曹凌熙",
+    "grade": "2025",
+    "title": "",
+    "github": "CX33071",
+    "linkText": "CSDN",
+    "link": "https://blog.csdn.net/CX33071",
+    "feed": ""
+  },
+  {
+    "name": "马湘林",
+    "grade": "2025",
+    "title": "",
+    "github": "GreatMxl",
+    "linkText": "",
+    "link": "",
+    "feed": ""
+  },
+  {
+    "name": "朱一鸣",
+    "grade": "2025",
+    "title": "",
+    "github": "yi-ming-star",
+    "linkText": "CSDN",
+    "link": "https://blog.csdn.net/yi_mingz",
+    "feed": ""
+  },
+  {
+    "name": "吕昊阳",
+    "grade": "2025",
+    "title": "",
+    "github": "lss525",
+    "linkText": "CSDN",
+    "link": "https://blog.csdn.net/2501_93364986",
+    "feed": ""
+  },
+  {
+    "name": "申雪瑶",
+    "grade": "2025",
+    "title": "",
+    "github": "Richard-afka",
+    "linkText": "CSDN",
+    "link": "https://blog.csdn.net/Jelly10161204",
+    "feed": ""
+  },
+  {
+    "name": "刘泽洋",
+    "grade": "2025",
+    "title": "",
+    "github": "Lzy82375",
+    "linkText": "",
+    "link": "",
+    "feed": ""
+  },
+  {
+    "name": "郑昊田",
+    "grade": "2025",
+    "title": "",
+    "github": "muxing37",
+    "linkText": "CSDN",
+    "link": "https://blog.csdn.net/z2523557839",
+    "feed": ""
+  },
+  {
+    "name": "姚艺乐",
+    "grade": "2025",
+    "title": "",
+    "github": "yaolele05",
+    "linkText": "CSDN",
+    "link": "https://blog.csdn.net/2503_93757505",
+    "feed": "https://rss.csdn.net/2503_93757505/rss/map"
+  },
+  {
+    "name": "陈镜宇",
+    "grade": "2025",
+    "title": "",
+    "github": "Mouyu9230",
+    "linkText": "CSDN",
+    "link": "https://blog.csdn.net/Mouyu9230",
+    "feed": ""
+  },
+  {
+    "name": "胡广晨",
+    "grade": "2025",
+    "title": "",
+    "github": "hgc-qwe",
+    "linkText": "CSDN",
+    "link": "https://blog.csdn.net/hgc_qwe",
+    "feed": ""
+  },
+  {
+    "name": "刘子夏",
+    "grade": "2025",
+    "title": "",
+    "github": "Shiloh0420",
+    "linkText": "CSDN",
+    "link": "https://blog.csdn.net/Shiloh0420",
+    "feed": ""
+  },
+  {
     "name": "王嘉乐",
     "grade": "2024",
     "title": "24级负责人",
@@ -67,9 +220,9 @@
     "grade": "2024",
     "title": "",
     "github": "25ALN",
-    "linkText": "",
-    "link": "",
-    "feed": ""
+    "linkText": "CSDN",
+    "link": "https://blog.csdn.net/2401_86545494",
+    "feed": "https://rss.csdn.net/2401_86545494/rss/map"
   },
   {
     "name": "王力扬",
@@ -85,9 +238,9 @@
     "grade": "2024",
     "title": "",
     "github": "linnaid",
-    "linkText": "",
-    "link": "",
-    "feed": ""
+    "linkText": "CSDN",
+    "link": "https://blog.csdn.net/Linna__",
+    "feed": "https://rss.csdn.net/Linna__/rss/map"
   },
   {
     "name": "孟昶羽",
@@ -111,7 +264,7 @@
     "name": "郑成龙",
     "grade": "2024",
     "title": "",
-    "github": "hahahahaha66",
+    "github": "Alorun",
     "linkText": "",
     "link": "",
     "feed": ""
@@ -132,6 +285,15 @@
     "github": "jianger-yu",
     "linkText": "CSDN",
     "link": "https://blog.csdn.net/2401_86153466",
+    "feed": "https://rss.csdn.net/2401_86153466/rss/map"
+  },
+  {
+    "name": "申思颖",
+    "grade": "2024",
+    "title": "",
+    "github": "shensiying",
+    "linkText": "",
+    "link": "",
     "feed": ""
   },
   {
