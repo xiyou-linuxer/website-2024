@@ -1,5 +1,4 @@
 *.md linguist-detectable=true
 docs/** linguist-documentation=false
 
-* text eol=lf
-public/ binary
+* text=auto eol=lf
