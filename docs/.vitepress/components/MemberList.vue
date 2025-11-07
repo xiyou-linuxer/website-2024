@@ -12,6 +12,13 @@ const activeGrade = ref<string[]>(
 	grades.map(entry => entry.grade).slice(0, props.showNewestNum ?? 1),
 )
 
+const activeGradeHue = computed(() =>
+	activeGrade.value.reduce((acc, grade, i) => {
+		acc[grade] = `${-i * 48}deg`
+		return acc
+	}, {} as Record<string, string>),
+)
+
 const search = ref('')
 
 const activeMembers = computed(() =>
@@ -43,6 +50,7 @@ function setActiveGrade(e: MouseEvent, ...grade: string[]) {
 					v-for="{ grade, length } in grades"
 					:key="grade"
 					:class="{ active: activeGrade.includes(grade) && !search }"
+					:style="{ '--hue': activeGradeHue[grade] }"
 					@click="setActiveGrade($event, grade)"
 				>
 					<span class="grade">{{ grade }}</span>
@@ -64,6 +72,7 @@ function setActiveGrade(e: MouseEvent, ...grade: string[]) {
 			v-for="member in activeMembers"
 			:key="member.github || member.name"
 			v-bind="member"
+			:style="{ '--hue': activeGradeHue[member.grade] }"
 		/>
 	</div>
 </div>
@@ -124,6 +133,7 @@ function setActiveGrade(e: MouseEvent, ...grade: string[]) {
 .tabs button.active {
 	background-color: var(--vp-c-brand);
 	color: var(--vp-c-bg);
+	filter: hue-rotate(var(--hue));
 }
 
 .search {

@@ -123,10 +123,16 @@ useIntersectionObserver(loadTrigger, ([{ isIntersecting }]) => {
 		</template>
 	</Dropdown>
 
-	<Icon icon="ri:filter-off-line" class="cursor-pointer" title="重置筛选" @click="setFilter()" />
+	<button
+		class="bg-blur"
+		title="重置筛选"
+		@click="setFilter({ grade: activeGrade })"
+	>
+		<Icon icon="ri:filter-off-line" />
+	</button>
 
 	<Dropdown tag="button" title="偏好设置">
-		<Icon icon="ri:list-settings-fill" class="cursor-pointer" />
+		<Icon icon="ri:list-settings-fill" />
 		<template #content>
 			<ArticlePreference />
 		</template>
@@ -164,8 +170,8 @@ h1, .stats {
 	gap: 1rem;
 }
 
-.search-dropdown {
-	flex-shrink: 1;
+:deep(button) {
+	font: inherit;
 }
 
 .search-dropdown input {

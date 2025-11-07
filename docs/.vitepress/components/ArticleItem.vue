@@ -9,7 +9,13 @@ import { getMemberByFeed } from '@/utils/member'
 const props = defineProps<Article>()
 
 const article = useArticleStore()
-const dateLabel = new Date(props.date).toLocaleString('zh-CN', { year: '2-digit', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit' })
+const dateLabel = new Date(props.date).toLocaleString('zh-CN', {
+	year: '2-digit',
+	month: '2-digit',
+	day: '2-digit',
+	hour: '2-digit',
+	minute: '2-digit',
+})
 
 const member = getMemberByFeed(props.feed)
 const author = computed(() => article.getAuthor(member) || props.author)
@@ -43,16 +49,17 @@ const avatar = computed(() => article.getAvatar(member))
 	overflow: hidden;
 	max-height: 12rem;
 	padding: 1rem;
+	border: 1px solid transparent;
 	border-radius: 0.5rem;
-	outline: 1px solid transparent;
 	background: var(--vp-c-bg-soft);
 	line-height: 1.4;
 	color: var(--vp-c-text-1);
+	transition: all 0.2s;
 	z-index: 0;
 }
 
 .article-item:hover {
-	outline-color: var(--vp-c-brand-1);
+	border-color: var(--vp-c-brand-1);
 	background: none;
 	color: var(--vp-c-brand-1);
 }

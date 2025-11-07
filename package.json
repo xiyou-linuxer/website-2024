@@ -12,18 +12,18 @@
     "@iconify/vue": "^5.0.0",
     "@vueuse/core": "^14.0.0",
     "parse-domain": "^8.2.2",
-    "pinia": "^3.0.3",
+    "pinia": "^3.0.4",
     "qrcode": "^1.5.4",
     "vitepress": "^1.6.4",
-    "vue": "^3.5.22",
+    "vue": "^3.5.24",
     "vue-tippy": "^6.7.1"
   },
   "devDependencies": {
-    "@antfu/eslint-config": "^6.0.0",
+    "@antfu/eslint-config": "^6.2.0",
     "@types/qrcode": "^1.5.6",
     "@zinkawaii/stylelint-config": "^0.3.3",
     "@zinkawaii/tsconfig": "^0.0.2",
-    "eslint": "^9.38.0",
+    "eslint": "^9.39.1",
     "gray-matter": "^4.0.3",
     "stylelint": "^16.25.0"
   },
