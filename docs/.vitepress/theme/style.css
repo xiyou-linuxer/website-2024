@@ -1,6 +1,8 @@
 /* stylelint-disable selector-class-pattern */
 
 :root {
+	--vp-font-family-base: "InterVariable", "Noto Sans SC", system-ui, sans-serif;
+	--vp-font-family-mono: ui-monospace, "JetBrains Mono", "Cascadia Code", "Consolas", "monospace", var(--vp-font-family-base), monospace;
 	--vp-home-hero-name-color: transparent;
 	--vp-home-hero-name-background: linear-gradient(60deg, #2CA, #EC0);
 	--vp-home-hero-image-background-image: linear-gradient(30deg, #EC0 50%, #2CA 50%);
@@ -11,6 +13,9 @@
 	--vp-c-brand-3: #1A8;
 	--vp-c-brand-soft: #2B93;
 	--vp-c-bg-a: #FFFA;
+
+	font-variant-alternates: styleset(open-digits, disambiguation, round-quotes-and-commas);
+	text-autospace: normal;
 }
 
 :root.dark {
@@ -18,7 +23,6 @@
 	--vp-c-brand-1: #2B9;
 	--vp-c-brand-2: #3CA;
 }
-
 
 ::selection {
 	background-color: var(--vp-c-brand-soft);
@@ -28,6 +32,10 @@
 	font-family: "标小智无界黑";
 	font-weight: bold;
 	src: url("/static/BiaoXiaoZhiWuJieHei.otf");
+}
+
+code, pre {
+	text-autospace: none;
 }
 
 select, input {

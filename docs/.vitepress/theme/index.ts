@@ -14,11 +14,10 @@ import CommGroup from '@/components/CommGroup.vue'
 import Footer from '@/components/Footer.vue'
 import NotFound from '@/components/NotFound.vue'
 
-import './font.css'
+import 'tippy.js/dist/svg-arrow.css'
 import './reusable.css'
 import './style.css'
 import './theme-enhanced.css'
-import 'tippy.js/dist/svg-arrow.css'
 
 const globalComponents = {
 	Dropdown,
