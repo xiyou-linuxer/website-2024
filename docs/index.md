@@ -3,7 +3,7 @@ titleTemplate: :title - Xiyou Linux Group
 layout: home
 
 hero:
-  name: 西邮 Linux 兴趣小组
+  name: 西邮Linux兴趣小组
   text: <small>Free Open Share</small>
   tagline:
   image:

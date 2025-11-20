@@ -29,9 +29,10 @@
 }
 
 @font-face {
-	font-family: "标小智无界黑";
-	font-weight: bold;
-	src: url("/static/BiaoXiaoZhiWuJieHei.otf");
+	font-family: "LogoSC Unbounded Sans";
+	font-stretch: expanded;
+	font-weight: 900;
+	src: url("/static/LogoSC-Unbounded-Sans.woff2");
 }
 
 code, pre {
@@ -62,8 +63,9 @@ input[type="checkbox"] {
 }
 
 .VPHero .heading,
-.font-wjh {
-	font-family: "标小智无界黑", sans-serif;
+.font-dela {
+	font-family: "Google Sans Flex", "LogoSC Unbounded Sans", sans-serif;
+	font-variation-settings: "wdth" 120, "wght" 900;
 }
 
 .VPFeature {
