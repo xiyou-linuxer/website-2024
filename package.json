@@ -10,22 +10,23 @@
   },
   "dependencies": {
     "@iconify/vue": "^5.0.0",
-    "@vueuse/core": "^14.0.0",
+    "@vueuse/core": "^14.1.0",
     "parse-domain": "^8.2.2",
     "pinia": "^3.0.4",
+    "pinyin-match": "^1.2.10",
     "qrcode": "^1.5.4",
     "vitepress": "^1.6.4",
-    "vue": "^3.5.24",
+    "vue": "^3.5.26",
     "vue-tippy": "^6.7.1"
   },
   "devDependencies": {
-    "@antfu/eslint-config": "^6.2.0",
+    "@antfu/eslint-config": "^6.7.1",
     "@types/qrcode": "^1.5.6",
     "@zinkawaii/stylelint-config": "^0.3.4",
     "@zinkawaii/tsconfig": "^0.0.2",
-    "eslint": "^9.39.1",
+    "eslint": "^9.39.2",
     "gray-matter": "^4.0.3",
-    "stylelint": "^16.25.0"
+    "stylelint": "^16.26.1"
   },
   "pnpm": {
     "onlyBuiltDependencies": [

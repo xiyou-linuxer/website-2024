@@ -1,44 +1,52 @@
 <script setup lang="ts">
+import type { Member } from '@/utils/member'
+import { useDebounceFn } from '@vueuse/core'
 import { computed, ref } from 'vue'
 import members from '@/data/members.json'
-import { getMembers, grades } from '@/utils/member'
+import { grades, searchMembers } from '@/utils/member'
 import MemberCard from './MemberCard.vue'
 
 const props = defineProps<{
 	showNewestNum?: number
 }>()
 
-const activeGrade = ref<string[]>(
+type Grade = Member['grade']
+
+const activeGrade = ref<Grade[]>(
 	grades.map(entry => entry.grade).slice(0, props.showNewestNum ?? 1),
 )
 
-const activeGradeHue = computed(() =>
-	activeGrade.value.reduce((acc, grade, i) => {
-		acc[grade] = `${-i * 48}deg`
-		return acc
-	}, {} as Record<string, string>),
-)
+const highlightGrade = ref<Grade>('')
+
+const activeGradeHue = computed(() => Object.fromEntries(activeGrade.value
+	.slice()
+	.sort((a, b) => b.localeCompare(a))
+	.map((grade, i) => [grade, `${-i * 48}deg`]),
+))
 
 const search = ref('')
 
-const activeMembers = computed(() =>
-	search.value
-		? getMembers(search.value)
-		: members.filter(member => activeGrade.value.includes(member.grade)),
+const activeMembers = computed(() => search.value
+	? searchMembers(search.value)
+	: members.filter(member => activeGrade.value.includes(member.grade)),
 )
 
-function setActiveGrade(e: MouseEvent, ...grade: string[]) {
-	search.value = ''
-	if (e.ctrlKey || e.shiftKey) {
-		if (activeGrade.value.includes(grade[0]))
-			activeGrade.value = activeGrade.value.filter(g => g !== grade[0])
-		else
-			activeGrade.value.push(grade[0])
-	}
-	else {
-		activeGrade.value = grade
-	}
+function toggleGrade(...grades: Grade[]) {
+	return grades.reduce((acc, grade) => acc.includes(grade)
+		? acc.filter(g => g !== grade)
+		: [...acc, grade], activeGrade.value)
 }
+
+function setActiveGrade(e: MouseEvent, ...grades: Grade[]) {
+	search.value = ''
+	activeGrade.value = e.ctrlKey || e.metaKey
+		? toggleGrade(...grades)
+		: grades
+}
+
+const setHighlightGrade = useDebounceFn((grade: Grade) => {
+	highlightGrade.value = grade
+}, 100)
 </script>
 
 <template>
@@ -49,12 +57,19 @@ function setActiveGrade(e: MouseEvent, ...grade: string[]) {
 				<button
 					v-for="{ grade, length } in grades"
 					:key="grade"
-					:class="{ active: activeGrade.includes(grade) && !search }"
+					:class="{
+						highlight: highlightGrade === grade,
+						active: activeGrade.includes(grade) && !search,
+					}"
 					:style="{ '--hue': activeGradeHue[grade] }"
 					@click="setActiveGrade($event, grade)"
 				>
 					<span class="grade">{{ grade }}</span>
 					<span class="badge">{{ length }}</span>
+				</button>
+				<button @click="setActiveGrade($event, ...grades.map(g => g.grade))">
+					<span class="grade">全部</span>
+					<span class="badge">{{ members.length }}</span>
 				</button>
 			</div>
 		</div>
@@ -72,7 +87,10 @@ function setActiveGrade(e: MouseEvent, ...grade: string[]) {
 			v-for="member in activeMembers"
 			:key="member.github || member.name"
 			v-bind="member"
+			:class="{ colorful: activeGrade.length > 1 && !search }"
 			:style="{ '--hue': activeGradeHue[member.grade] }"
+			@mouseenter="setHighlightGrade(member.grade)"
+			@mouseleave="setHighlightGrade('')"
 		/>
 	</div>
 </div>
@@ -89,6 +107,9 @@ function setActiveGrade(e: MouseEvent, ...grade: string[]) {
 
 .scrollcheck-x {
 	--guessed-scrollbar-height: 0px;
+
+	margin: -0.5rem;
+	padding: 0.5rem;
 }
 
 .tabs {
@@ -128,6 +149,11 @@ function setActiveGrade(e: MouseEvent, ...grade: string[]) {
 	padding: 0 2px;
 	background-color: var(--vp-c-default-soft);
 	vertical-align: middle;
+}
+
+.tabs button.highlight {
+	/* stylelint-disable-next-line declaration-no-important */
+	outline: 0.5em solid var(--vp-c-brand) !important;
 }
 
 .tabs button.active {

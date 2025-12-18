@@ -28,13 +28,11 @@ defineProps<Member>()
 	border-radius: 12px;
 	background-color: var(--vp-c-bg-soft);
 	line-height: 1.2em;
-	filter: hue-rotate(var(--hue));
 }
 
-@supports (color: color-mix(in srgb, transparent, transparent)) {
-	.card {
-		background-color: color-mix(in srgb, transparent, var(--vp-c-brand-soft) 40%);
-	}
+.card.colorful {
+	background-color: color-mix(in srgb, transparent, var(--vp-c-brand-soft) 40%);
+	filter: hue-rotate(var(--hue));
 }
 
 .card > .avatar {
@@ -43,6 +41,9 @@ defineProps<Member>()
 	margin: 0.5rem 0;
 	border-radius: 4rem;
 	box-shadow: 2px 4px 1rem var(--vp-c-divider);
+}
+
+.card.colorful > .avatar {
 	filter: hue-rotate(calc(var(--hue) * -1));
 }
 

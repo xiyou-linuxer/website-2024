@@ -1,3 +1,4 @@
+import Pinyin from 'pinyin-match'
 import members from '@/data/members.json'
 
 export interface Member {
@@ -42,7 +43,7 @@ const memberIndex = members.map(member => ({
 	searchString: Object.values(member).join(' ').toLowerCase(),
 }))
 
-export function getMembers(search: string) {
+export function searchMembers(search: string) {
 	const lowerSearch = search.toLowerCase()
-	return memberIndex.filter(member => member.searchString.includes(lowerSearch))
+	return memberIndex.filter(member => Pinyin.match(member.searchString, lowerSearch))
 }

@@ -7,7 +7,7 @@ import { computed, ref, useTemplateRef } from 'vue'
 import members from '@/data/members.json'
 import { useArticleStore } from '@/stores/article'
 import { queryBuild } from '@/utils/link'
-import { getMembers, grades } from '@/utils/member'
+import { searchMembers, grades } from '@/utils/member'
 import ArticleItem from './ArticleItem.vue'
 import ArticlePreference from './ArticlePreference.vue'
 
@@ -29,7 +29,7 @@ const search = ref('')
 const activeGrade = ref('')
 const activeMember = ref<Member>()
 const activeMembers = computed(() => (search.value
-	? getMembers(search.value)
+	? searchMembers(search.value)
 	: members.filter(member => member.grade === activeGrade.value || !activeGrade.value)
 ).filter(member => member.feed))
 
