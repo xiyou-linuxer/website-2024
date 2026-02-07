@@ -15,7 +15,7 @@ const defaultPreference = {
 
 export const authorMap = {
 	raw: {
-		label: '原始值(Feed标题)',
+		label: '原始值 (Feed标题)',
 		transform: () => undefined,
 	},
 	name: {

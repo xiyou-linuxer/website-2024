@@ -153,8 +153,8 @@ useIntersectionObserver(loadTrigger, ([{ isIntersecting }]) => {
 </template>
 
 <style scoped>
-h1, .stats {
-	margin: 2em 0 1rem;
+h1 {
+	margin: 2em 0 2rem;
 	font: revert;
 	line-height: 1.4;
 	text-align: center;
@@ -165,6 +165,7 @@ h1, .stats {
 	flex-wrap: wrap;
 	justify-content: center;
 	gap: 0.5em 1em;
+	margin: 1em 0;
 }
 
 .control {
