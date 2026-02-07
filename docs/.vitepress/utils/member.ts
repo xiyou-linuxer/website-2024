@@ -34,7 +34,9 @@ export const grades = (() => {
 	return Array.from(gradeMap, ([grade, length]) => ({ grade, length }))
 })()
 
-export function getMemberByFeed(feed: string) {
+export function getMemberByFeed(feed: string): Member {
+	if (!feed)
+		return {} as Member
 	return members.find(member => member.feed === feed) || {} as Member
 }
 

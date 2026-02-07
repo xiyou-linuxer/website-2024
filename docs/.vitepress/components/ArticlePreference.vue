@@ -6,7 +6,7 @@ const { preference } = storeToRefs(useArticleStore())
 </script>
 
 <template>
-<form>
+<form class="vp-doc">
 	<label for="author">来源展示</label>
 	<select id="author" v-model="preference.author">
 		<option v-for="(author, key) in authorMap" :key :value="key">
@@ -31,12 +31,17 @@ const { preference } = storeToRefs(useArticleStore())
 	<label for="wide">宽屏</label>
 	<input id="wide" v-model="preference.wide" type="checkbox">
 
-	<label for="api">API</label>
+	<label for="api">数据源</label>
 	<select id="api" v-model="preference.api">
 		<option v-for="(api, key) in apiMap" :key :value="key">
 			{{ api.label }}
 		</option>
 	</select>
+
+	<label for="about">关于</label>
+	<output id="about">
+		<a href="https://github.com/xiyou-linuxer/blog-feed" target="_blank">API 源码</a>
+	</output>
 </form>
 </template>
 

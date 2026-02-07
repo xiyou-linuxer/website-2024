@@ -25,7 +25,7 @@ import CommGroup from "@/components/CommGroup.vue"
 
 ### <i class="fa-brands fa-weixin"></i> 公众号：西邮Linux兴趣小组 {#mp}
 
-<QRCode src="http://weixin.qq.com/r/mp/sHX8_PfEcT8NKbObbyA0" style="margin-block: 1em;" />
+<Qrcode src="http://weixin.qq.com/r/mp/sHX8_PfEcT8NKbObbyA0" style="margin-block: 1em;" />
 
 ### <i class="fa-brands fa-bilibili"></i> 哔哩哔哩：[西邮Linux兴趣小组](https://space.bilibili.com/432976868/)
 

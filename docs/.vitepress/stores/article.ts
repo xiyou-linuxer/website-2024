@@ -64,7 +64,7 @@ export const sizeMap = {
 
 export const apiMap = {
 	prod: {
-		label: '正常(生产环境)',
+		label: '正常 (生产环境)',
 		transform: (path: string) => new URL(path, 'https://api.xiyoulinux.com').toString(),
 	},
 	local: {

@@ -1,36 +1,26 @@
 <script setup lang="ts">
-import QRCode from 'qrcode'
+import type { QrCodeGenerateSvgOptions } from 'uqr'
+import { renderSVG } from 'uqr'
 import { onMounted, ref } from 'vue'
 import Link from './Link.vue'
 
 const props = defineProps<{
 	src: string
 	text?: string
-	scale?: number
+	size?: string
 	visit?: boolean
+	uqrOptions?: QrCodeGenerateSvgOptions
 }>()
 
-const qrcodeDataUrl = ref('')
+const svg = ref('')
 
-async function generateQRCode() {
-	if (!props.src)
-		return
-
-	qrcodeDataUrl.value = await QRCode.toDataURL(props.src, {
-		margin: 2,
-		scale: props.scale ?? 4,
-	})
-}
-
-onMounted(() => {
-	generateQRCode()
-})
+onMounted(() => svg.value = renderSVG(props.src, props.uqrOptions || { border: 2, pixelSize: 1 }))
 </script>
 
 <template>
 <div class="qrcode">
-	<img class="image" :src="qrcodeDataUrl" alt="">
-	<div class="text vp-doc">
+	<div class="svg-container" :style="{ '--size': size }" v-html="svg" />
+	<div class="vp-doc">
 		{{ text }}
 		<template v-if="visit">
 			<Link :link="src">
@@ -42,14 +32,17 @@ onMounted(() => {
 </template>
 
 <style scoped>
-.image {
-	opacity: 0.75;
+.svg-container {
+	width: var(--size, 8em);
 	margin: auto;
-	image-rendering: pixelated;
 }
 
-.text {
+.svg-container :deep(svg) {
 	opacity: 0.8;
+	border-radius: 5%;
+}
+
+.vp-doc {
 	margin: 0.5em 0 1em;
 	font-size: 0.8em;
 	line-height: 1.4;

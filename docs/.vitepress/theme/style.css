@@ -39,6 +39,10 @@ code, pre {
 	text-autospace: none;
 }
 
+button > svg:only-child {
+	display: block;
+}
+
 select, input {
 	height: 1.8em;
 	border-radius: 0.3rem;
@@ -82,14 +86,6 @@ input[type="checkbox"] {
 	background-color: transparent;
 	font-size: 8em;
 	z-index: -1;
-}
-
-.fa-solid,
-.fa-regular,
-.fa-brands {
-	width: 1.3em;
-	vertical-align: middle;
-	text-align: center;
 }
 
 svg:where(.iconify) {

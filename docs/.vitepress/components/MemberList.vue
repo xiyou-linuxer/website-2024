@@ -96,7 +96,7 @@ const setHighlightGrade = useDebounceFn((grade: Grade) => {
 </div>
 </template>
 
-<style scoped>
+<style lang="scss" scoped>
 .tabs-container {
 	margin: 2rem 0;
 }
@@ -153,7 +153,8 @@ const setHighlightGrade = useDebounceFn((grade: Grade) => {
 
 .tabs button.highlight {
 	/* stylelint-disable-next-line declaration-no-important */
-	outline: 0.5em solid var(--vp-c-brand) !important;
+	outline: 4px solid var(--vp-c-brand) !important;
+	outline-offset: 2px;
 }
 
 .tabs button.active {

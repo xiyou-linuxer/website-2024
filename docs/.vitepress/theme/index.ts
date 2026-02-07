@@ -8,7 +8,7 @@ import { h } from 'vue'
 import VueTippy, { roundArrow } from 'vue-tippy'
 
 import Dropdown from '@/components/atomic/Dropdown.vue'
-import QRCode from '@/components/atomic/QRCode.vue'
+import Qrcode from '@/components/atomic/Qrcode.vue'
 import Tip from '@/components/atomic/Tip.vue'
 import CommGroup from '@/components/CommGroup.vue'
 import Footer from '@/components/Footer.vue'
@@ -22,7 +22,7 @@ import './theme-enhanced.css'
 const globalComponents = {
 	Dropdown,
 	Icon,
-	QRCode,
+	Qrcode,
 	Tip,
 }
 

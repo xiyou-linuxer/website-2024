@@ -29,7 +29,7 @@ const commGroup = [
 		<Icon icon="ri:arrow-right-s-line" class="arrow" />
 
 		<template #content>
-			<QRCode :src="commGroup[0].code" text="QQ 扫码加入" />
+			<Qrcode :src="commGroup[0].code" text="QQ 扫码加入" />
 		</template>
 	</Dropdown>
 </span>
@@ -60,7 +60,7 @@ const commGroup = [
 	color: var(--vp-c-text-2);
 }
 
-:deep(.image) {
+:deep(.svg-container) {
 	margin: 0.5em;
 	border-radius: 0.5em;
 }

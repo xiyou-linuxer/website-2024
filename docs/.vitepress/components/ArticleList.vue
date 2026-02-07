@@ -4,10 +4,11 @@ import type { Member } from '@/utils/member'
 import { useIntersectionObserver } from '@vueuse/core'
 import { storeToRefs } from 'pinia'
 import { computed, ref, useTemplateRef } from 'vue'
+import { useRouteQuery } from '@/composables/useRouteQuery'
 import members from '@/data/members.json'
 import { useArticleStore } from '@/stores/article'
-import { queryBuild } from '@/utils/link'
-import { searchMembers, grades } from '@/utils/member'
+import { getMainDomain, queryBuild } from '@/utils/link'
+import { getMemberByFeed, grades, searchMembers } from '@/utils/member'
 import ArticleItem from './ArticleItem.vue'
 import ArticlePreference from './ArticlePreference.vue'
 
@@ -26,22 +27,22 @@ const pageStatus = ref({ ...initPageStatus })
 const articleList = ref<Article[]>([])
 
 const search = ref('')
-const activeGrade = ref('')
-const activeMember = ref<Member>()
-const activeMembers = computed(() => (search.value
+const activeGrade = useRouteQuery('grade', '')
+const activeFeed = useRouteQuery('feed', '')
+const searchedMembers = computed(() => (search.value
 	? searchMembers(search.value)
 	: members.filter(member => member.grade === activeGrade.value || !activeGrade.value)
 ).filter(member => member.feed))
 
-function setFilter(options: { member?: Member, grade?: string } = {}) {
+function setFilter(options: { member?: Member, grade?: string }) {
 	const { member, grade } = options
 	pageStatus.value = { ...initPageStatus }
 	articleList.value = []
 
 	search.value = ''
 	activeGrade.value = grade || member?.grade || ''
-	activeMember.value = member
-
+	activeFeed.value = member?.feed ?? ''
+	loadMore() // 保证快速切换时加载
 	window.scrollTo({ top: 0, behavior: 'smooth' })
 }
 
@@ -53,8 +54,8 @@ async function loadMore() {
 	const url = queryBuild(api('/articles'), {
 		limit: pageStatus.value.limit,
 		page: pageStatus.value.page + 1,
-		feed: activeMember.value ? activeMember.value.feed || 'null' : undefined,
-		tag: activeMember.value ? undefined : activeGrade.value,
+		feed: activeFeed.value,
+		tag: activeFeed.value ? undefined : activeGrade.value,
 	})
 
 	const resp = await fetch(url)
@@ -75,12 +76,12 @@ useIntersectionObserver(loadTrigger, ([{ isIntersecting }]) => {
 </script>
 
 <template>
-<h1>{{ activeMember?.name || activeGrade || "群博" }} - 文章列表</h1>
+<h1>{{ getMemberByFeed(activeFeed)?.name || (activeGrade && `${activeGrade}级`) || "群博" }} - 文章列表</h1>
 <p class="vp-doc stats">
+	<span v-if="activeFeed">来自<a :href="getMemberByFeed(activeFeed)?.link" target="_blank">{{ getMainDomain(activeFeed) }}</a></span>
 	<span>共 {{ pageStatus.total }} 篇文章</span>
 	<a :href="api('/opml')" target="_blank">OPML</a>
 	<a :href="api('/rss')" target="_blank">RSS</a>
-	<a href="https://github.com/xiyou-linuxer/blog-feed" target="_blank">API 源码</a>
 </p>
 
 <div class="control sticky-header">
@@ -106,15 +107,15 @@ useIntersectionObserver(loadTrigger, ([{ isIntersecting }]) => {
 			type="search"
 			placeholder="搜索成员"
 		>
-		<template v-if="activeMembers" #content="{ hide }">
+		<template v-if="searchedMembers" #content="{ hide }">
 			<button
-				v-if="activeMember && !search"
+				v-if="activeFeed && !search"
 				@click="hide(), setFilter({ grade: activeGrade })"
 			>
 				{{ activeGrade }} 级全部
 			</button>
 			<button
-				v-for="member in activeMembers"
+				v-for="member in searchedMembers"
 				:key="member.feed"
 				@click="hide(), setFilter({ member })"
 			>
@@ -126,13 +127,13 @@ useIntersectionObserver(loadTrigger, ([{ isIntersecting }]) => {
 	<button
 		class="bg-blur"
 		title="重置筛选"
-		@click="setFilter({ grade: activeGrade })"
+		@click="setFilter(activeFeed ? { grade: activeGrade } : {})"
 	>
-		<Icon icon="ri:filter-off-line" />
+		<Icon icon="ri:filter-off-line" width="20" />
 	</button>
 
 	<Dropdown tag="button" title="偏好设置">
-		<Icon icon="ri:list-settings-fill" />
+		<Icon icon="ri:list-settings-fill" width="20" />
 		<template #content>
 			<ArticlePreference />
 		</template>
@@ -159,8 +160,11 @@ h1, .stats {
 	text-align: center;
 }
 
-.stats > *:not(:first-child) {
-	margin-left: 1rem;
+.stats {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	gap: 0.5em 1em;
 }
 
 .control {
@@ -168,10 +172,6 @@ h1, .stats {
 	align-items: center;
 	justify-content: center;
 	gap: 1rem;
-}
-
-:deep(button) {
-	font: inherit;
 }
 
 .search-dropdown input {
@@ -197,14 +197,6 @@ h1, .stats {
 
 .article-list.narrow {
 	max-width: 83rem;
-}
-
-.loading-item {
-	min-height: 10rem;
-	border-radius: 0.5rem;
-	background-color: var(--vp-c-bg-soft);
-	animation: fade-in 1s both;
-	animation-timeline: view();
 }
 
 @keyframes fade-in {
