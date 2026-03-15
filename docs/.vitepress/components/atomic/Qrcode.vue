@@ -1,8 +1,7 @@
 <script setup lang="ts">
 import type { QrCodeGenerateSvgOptions } from 'uqr'
 import { renderSVG } from 'uqr'
-import { onMounted, ref } from 'vue'
-import Link from './Link.vue'
+import { ref, watchEffect } from 'vue'
 
 const props = defineProps<{
 	src: string
@@ -13,8 +12,7 @@ const props = defineProps<{
 }>()
 
 const svg = ref('')
-
-onMounted(() => svg.value = renderSVG(props.src, props.uqrOptions || { border: 2, pixelSize: 1 }))
+watchEffect(() => svg.value = renderSVG(props.src, props.uqrOptions || { border: 2, pixelSize: 1 }))
 </script>
 
 <template>
