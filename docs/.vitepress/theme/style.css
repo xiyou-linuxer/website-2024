@@ -69,13 +69,19 @@ input[type="checkbox"] {
 .VPHero .heading,
 .font-dela {
 	font-family: "Google Sans Flex", "LogoSC Unbounded Sans", sans-serif;
-	font-variation-settings: "wdth" 120, "wght" 900;
+	font-stretch: 120%;
+	font-weight: 900;
 }
 
 .VPFeature {
 	position: relative;
 	overflow: hidden;
 	z-index: 0;
+}
+
+.VPFeature.VPLink:hover {
+	background-color: var(--vp-c-bg);
+	color: var(--vp-c-brand-1);
 }
 
 .VPFeature .icon {

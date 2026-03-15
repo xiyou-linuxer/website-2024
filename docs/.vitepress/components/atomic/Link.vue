@@ -79,7 +79,7 @@ withDefaults(defineProps<LinkProps>(), {
 
 a.link.card:hover {
 	border-color: var(--vp-c-brand-1);
-	background-color: var(--vp-c-bg-soft-hover);
+	background-color: var(--vp-c-bg);
 	color: var(--vp-c-brand-1);
 }
 
