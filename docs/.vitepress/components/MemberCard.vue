@@ -30,21 +30,12 @@ defineProps<Member>()
 	line-height: 1.2em;
 }
 
-.card.colorful {
-	background-color: color-mix(in srgb, transparent, var(--vp-c-brand-soft) 40%);
-	filter: hue-rotate(var(--hue));
-}
-
 .card > .avatar {
 	width: 3rem;
 	height: 3rem;
 	margin: 0.5rem 0;
 	border-radius: 4rem;
 	box-shadow: 2px 4px 1rem var(--vp-c-divider);
-}
-
-.card.colorful > .avatar {
-	filter: hue-rotate(calc(var(--hue) * -1));
 }
 
 .card > .name {

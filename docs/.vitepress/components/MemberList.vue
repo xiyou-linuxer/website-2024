@@ -19,9 +19,7 @@ const activeGrade = ref<Grade[]>(
 const highlightGrade = ref<Grade>('')
 
 const activeGradeHue = computed(() => Object.fromEntries(activeGrade.value
-	.slice()
-	.sort((a, b) => b.localeCompare(a))
-	.map((grade, i) => [grade, `${-i * 48}deg`]),
+	.map((grade, i) => [grade, `${170 - i * 48}deg`]),
 ))
 
 const search = ref('')
@@ -35,6 +33,7 @@ function toggleGrade(...grades: Grade[]) {
 	return grades.reduce((acc, grade) => acc.includes(grade)
 		? acc.filter(g => g !== grade)
 		: [...acc, grade], activeGrade.value)
+		.sort((a, b) => b.localeCompare(a))
 }
 
 function setActiveGrade(e: MouseEvent, ...grades: Grade[]) {
@@ -57,6 +56,7 @@ const setHighlightGrade = useDebounceFn((grade: Grade) => {
 				<button
 					v-for="{ grade, length } in grades"
 					:key="grade"
+					class="tab-button"
 					:class="{
 						highlight: highlightGrade === grade,
 						active: activeGrade.includes(grade) && !search,
@@ -117,11 +117,8 @@ const setHighlightGrade = useDebounceFn((grade: Grade) => {
 	flex-wrap: wrap;
 	justify-content: center;
 	gap: 0.5rem;
-}
 
-/* stylelint-disable-next-line media-feature-range-notation */
-@media (max-width: 50rem) {
-	.tabs {
+	@media (max-width: 50rem) {
 		display: grid;
 		grid-auto-flow: column;
 		grid-template-rows: 1fr 1fr;
@@ -130,7 +127,7 @@ const setHighlightGrade = useDebounceFn((grade: Grade) => {
 	}
 }
 
-.tabs button {
+.tab-button {
 	display: flex;
 	align-items: center;
 	overflow: hidden;
@@ -138,29 +135,29 @@ const setHighlightGrade = useDebounceFn((grade: Grade) => {
 	border-radius: 4px;
 	background-color: var(--vp-c-bg-soft);
 	cursor: pointer;
-}
 
-.tabs button > .grade {
-	padding: 0 4px;
-}
+	&.highlight {
+		/* stylelint-disable-next-line declaration-no-important */
+		outline: 4px solid var(--vp-c-brand) !important;
+		outline-offset: 2px;
+	}
 
-.tabs button > .badge {
-	flex-grow: 1;
-	padding: 0 2px;
-	background-color: var(--vp-c-default-soft);
-	vertical-align: middle;
-}
+	&.active {
+		background-color: var(--vp-c-brand);
+		background-color: oklch(70% 0.15 var(--hue));
+		color: var(--vp-c-bg);
+	}
 
-.tabs button.highlight {
-	/* stylelint-disable-next-line declaration-no-important */
-	outline: 4px solid var(--vp-c-brand) !important;
-	outline-offset: 2px;
-}
+	> .grade {
+		padding: 0 4px;
+	}
 
-.tabs button.active {
-	background-color: var(--vp-c-brand);
-	color: var(--vp-c-bg);
-	filter: hue-rotate(var(--hue));
+	> .badge {
+		flex-grow: 1;
+		padding: 0 2px;
+		background-color: var(--vp-c-default-soft);
+		vertical-align: middle;
+	}
 }
 
 .search {
@@ -172,5 +169,20 @@ const setHighlightGrade = useDebounceFn((grade: Grade) => {
 	display: grid;
 	grid-template-columns: repeat(auto-fill, minmax(9rem, 1fr));
 	gap: 8px;
+}
+
+.colorful {
+	--vp-c-brand-1: oklch(65% 0.12 var(--hue));
+	--vp-c-brand-dark: oklch(50% 0.12 var(--hue));
+	--vp-c-brand-bright: oklch(75% 0.12 var(--hue));
+	--vp-c-brand-soft: oklch(65% 0.12 var(--hue) / 8%);
+	--vp-c-brand-2: var(--vp-c-brand-dark);
+	--vp-c-brand-3: var(--vp-c-brand-bright);
+	--vp-c-bg-soft: var(--vp-c-brand-soft);
+
+	.dark & {
+		--vp-c-brand-2: var(--vp-c-brand-bright);
+		--vp-c-brand-3: var(--vp-c-brand-dark);
+	}
 }
 </style>

@@ -101,7 +101,6 @@
 	z-index: -1;
 }
 
-/* stylelint-disable-next-line media-feature-range-notation */
 @media (min-width: 960px) {
 	.sticky-header {
 		top: var(--vp-nav-height);
