@@ -1,5 +1,23 @@
 [
   {
+    "name": "王怡",
+    "grade": "2025",
+    "title": "",
+    "github": "whitebrain0242",
+    "linkText": "",
+    "link": "",
+    "feed": ""
+  },
+  {
+    "name": " 张梦阳",
+    "grade": "2025",
+    "title": "",
+    "github": "kutang0601",
+    "linkText": "",
+    "link": "",
+    "feed": ""
+  },
+  {
     "name": "叶露斌",
     "grade": "2025",
     "title": "",
@@ -264,7 +282,7 @@
     "name": "王柯",
     "grade": "2024",
     "title": "",
-    "github": "jianger-yu",
+    "github": "MUYI-luyu",
     "linkText": "CSDN",
     "link": "https://blog.csdn.net/2401_86153466",
     "feed": "https://rss.csdn.net/2401_86153466/rss/map"
