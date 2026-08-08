@@ -7,6 +7,7 @@ withDefaults(defineProps<{ limit?: number }>(), {
 })
 
 const commGroup = [
+	{ name: '2026 迎新交流群', id: '973640471', code: 'https://qm.qq.com/q/jLQM0OcDle' },
 	{ name: '2025 迎新交流群', id: '1056690528', code: 'https://qm.qq.com/q/VgW8oMhuCq' },
 	{ name: '2024 迎新交流群', id: '669398734', code: 'https://qm.qq.com/q/m32sThRzI4' },
 	{ name: '2023 迎新交流群', id: '854990503', code: 'https://qm.qq.com/q/MSgoCDRfmC' },
@@ -29,7 +30,7 @@ const commGroup = [
 		<Icon icon="ri:arrow-right-s-line" class="arrow" />
 
 		<template #content>
-			<Qrcode :src="commGroup[0].code" text="QQ 扫码加入" />
+			<Qrcode :src="group.code" text="QQ 扫码加入" />
 		</template>
 	</Dropdown>
 </span>
