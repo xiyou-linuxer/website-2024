@@ -100,8 +100,8 @@ int main() {
         int bitval = 1;
         int bits = 8;
         while (bits-- > 0) {
-            mask | = bitval;
-            bitval << = 1;
+            mask |= bitval;
+            bitval <<= 1;
         }
 
         printf("%c", nums[i] ^ mask);
