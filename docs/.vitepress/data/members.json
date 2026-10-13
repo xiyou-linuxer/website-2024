@@ -1,5 +1,185 @@
 [
   {
+    "name": "付彦琮",
+    "grade": "2026",
+    "title": "",
+    "github": "SimpFel ",
+    "linkText": "CSDN",
+    "link": "https://blog.csdn.net/2601_97202130",
+    "feed": ""
+  },
+  {
+    "name": "李一诺",
+    "grade": "2026",
+    "title": "",
+    "github": "liyinuo2007",
+    "linkText": "CSDN",
+    "link": "https://blog.csdn.net/2604_97192483?spm=1001.2014.3001.5343",
+    "feed": "https://blog.csdn.net/2604_97192483/rss/map"
+  },
+  {
+    "name": "刘如平",
+    "grade": "2026",
+    "title": "",
+    "github": "linhuan1111",
+    "linkText": "CSDN",
+    "link": "https://blog.csdn.net/luohuan0717?type=blog",
+    "feed": ""
+  },
+  {
+    "name": "崔雅量",
+    "grade": "2026",
+    "title": "",
+    "github": "jiatuli661-jpg",
+    "linkText": "CSDN ",
+    "link": "https://blog.csdn.net/ladygaga___?spm=1000.2115.3001.5343",
+    "feed": ""
+  },
+  {
+    "name": "张月盈",
+    "grade": "2026",
+    "title": "",
+    "github": "Jerrying207",
+    "linkText": "CSDN",
+    "link": "https://blog.csdn.net/2604_97191638?type=blog",
+    "feed": ""
+  },
+  {
+    "name": "赵经瑞",
+    "grade": "2026",
+    "title": "",
+    "github": "uhtl7",
+    "linkText": "CSDN",
+    "link": "https://blog.csdn.net/2604_97190545?spm=1000.2115.3001.5343",
+    "feed": ""
+  },
+  {
+    "name": "权恒立",
+    "grade": "2026",
+    "title": "",
+    "github": "hengliquan3-ops",
+    "linkText": "CSDN",
+    "link": "https://blog.csdn.net/quanhengli?type=collect",
+    "feed": ""
+  },
+  {
+    "name": "徐宇杭",
+    "grade": "2026",
+    "title": "",
+    "github": "shenyu789",
+    "linkText": "CSDN",
+    "link": "https://blog.csdn.net/shenyu678?type=blog",
+    "feed": ""
+  },
+  {
+    "name": "文纪尧",
+    "grade": "2026",
+    "title": "",
+    "github": "yaojiwen",
+    "linkText": "CSDN",
+    "link": "https://blog.csdn.net/2601_97178290?spm=1000.2115.3001.10640",
+    "feed": ""
+  },
+  {
+    "name": "王振奥",
+    "grade": "2026",
+    "title": "",
+    "github": "zgl-www",
+    "linkText": "CSDN",
+    "link": "https://blog.csdn.net/zzgglll?spm=1000.2115.3001.5343",
+    "feed": ""
+  },
+  {
+    "name": "刘奥冉",
+    "grade": "2026",
+    "title": "",
+    "github": "Emma525Eva",
+    "linkText": "CSDN",
+    "link": "https://blog.csdn.net/2601_97191972?utm_source=mtoolbar",
+    "feed": ""
+  },
+  {
+    "name": "艾煜程",
+    "grade": "2026",
+    "title": "",
+    "github": "qqdawanggjq",
+    "linkText": "CSDN",
+    "link": "https://blog.csdn.net/2603_97192318?utm_source=mtoolbar",
+    "feed": ""
+  },
+  {
+    "name": "龚传智",
+    "grade": "2026",
+    "title": "",
+    "github": "Yoi027K",
+    "linkText": "个人博客",
+    "link": "https://yoi027k.github.io/Twilight_Yoi/",
+    "feed": "https://yoi027k.github.io/Twilight_Yoi/rss.xml"
+  },
+  {
+    "name": "谢昕",
+    "grade": "2026",
+    "title": "",
+    "github": "XavieraXoe8642",
+    "linkText": "CSDN",
+    "link": "https://blog.csdn.net/XavieraXoe?spm=1000.2115.3001.5343",
+    "feed": ""
+  },
+  {
+    "name": "秦康其",
+    "grade": "2026",
+    "title": "",
+    "github": "Mi-xiaoxiao",
+    "linkText": "CSDN",
+    "link": "https://blog.csdn.net/Mi_Xiaoxiao_?spm=1000.2115.3001.5343",
+    "feed": ""
+  },
+  {
+    "name": "张畑甜",
+    "grade": "2026",
+    "title": "",
+    "qq": "2046793315",
+    "linkText": "CSDN",
+    "link": "https://blog.csdn.net/2601_96826865?spm=1000.2115.3001.10640",
+    "feed": ""
+  },
+  {
+    "name": "郭博尹",
+    "grade": "2026",
+    "title": "",
+    "github": "Ceobe0303",
+    "linkText": "CSDN",
+    "link": "https://blog.csdn.net/2601_97191410",
+    "feed": ""
+  },
+  {
+    "name": "肖雷杰",
+    "grade": "2026",
+    "title": "",
+    "github": "dy-EC",
+    "linkText": "CSDN",
+    "link": "https://blog.csdn.net/dyec_?spm=1011.2415.3001.5343s",
+    "feed": ""
+  },
+  {
+    "name": "宋雨杭",
+    "grade": "2026",
+    "title": "",
+    "github": "XBMZ666",
+    "linkText": "CSDN",
+    "link": "https://blog.csdn.net/XBMZ666?utm_source=mtoolbar",
+    "feed": ""
+  },
+  {
+    "name": "白德铭",
+    "grade": "2026",
+    "title": "",
+    "github": "BaiDeming-encryption",
+    "linkText": "CSDN",
+    "link": "https://blog.csdn.net/2403_86519030?spm=1000.2115.3001.5343",
+    "feed": ""
+  },
+  {
     "name": "叶露斌",
     "grade": "2025",
     "title": "25级负责人",
